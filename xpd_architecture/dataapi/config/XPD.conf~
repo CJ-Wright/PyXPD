@@ -1,0 +1,16 @@
+[Info]
+version = 0.0.1
+author = Chris Wright
+date of creation = 05/30/2014
+comments = None yet
+
+[PVs]
+xmotor = test:motorx1
+ymotor = test:motorx2
+photodiode = test:sensor1
+
+[aliases]
+x = xmotor
+y = ymotor
+pe = PerkinElmerDetector
+
