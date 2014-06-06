@@ -4,7 +4,7 @@ import cothread
 from cothread.catools import *
 from dataapi.config._conf import _conf
 
-"""Motor Commands"""
+
 def _initpvs(_conf):
     """
     Double checks connection to Instruments"""
@@ -17,7 +17,7 @@ def _initpvs(_conf):
         raise Exception('Some of the instruments were not found or connected\
         , namely %s'% (option,))
                 
-
+"""Motor Commands"""
 def printf(value):
 #    print value, test function
     return value
@@ -253,23 +253,60 @@ def mesh(func, *args, **kwargs):
 """Detector Commands"""
 
 
+def CaptureSingle(filename, subframes, seconds_per_subframe, Automatic=False, **kwargs):
+    """Captures an x-ray image creating a single file out of subframes with set \
+    integration times
+    
+    Parameters
+    ----------
+    filename: string
+        Name of a file to save to
+    subframes: int
+        Number of subframes to use to write the main image
+    seconds_per_subframe: float
+        Number of seconds of integration time for each subframe
+    Automatic: bool
+        If True then uses statistical analysis to create an integration time and \
+        number of subframes to make the output file statisticly signifigant out to \
+        a Q(A^-1) specified by the user
+    
+    Returns
+    -------
+    A: 2D array
+        Numpy array which represents the image pixels
+    """
+    pass
 
 
+def CaptureMulti(base_filename, filename_iterator,subframes, seconds_per_subframe, Automatic=False, **kwargs):
+    """Captures an x-ray image creating many files out of subframes with set \
+    integration times
+    
+    Parameters
+    ----------
+    base_filename: string
+        Name of a file to save to
+    filename_iterator: number or list
+        
+    subframes: int
+        Number of subframes to use to write the main image
+    seconds_per_subframe: float
+        Number of seconds of integration time for each subframe
+    Automatic: bool
+        If True then uses statistical analysis to create an integration time and \
+        number of subframes to make the output file statisticly signifigant out to \
+        a Q(A^-1) specified by the user
+    
+    Returns
+    -------
+    A: 3D array
+        Numpy array which represents the images
+    """
+#check that shutter is open
+#take darkfield image? or do this inside the core?    
+    pass
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
+           
 if __name__ == "__main__":
     _initpvs(_conf)
     print('Initial positions:')
