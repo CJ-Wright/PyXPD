@@ -31,6 +31,7 @@ def trans(alias):
 def move(alias,value,wait=False, printop=False):
     #check final position within limits
     motor=motorD[alias]
+#    print motorD
     if motor['low']<= value <=motor['high']:
         #check is move is within motor resolution,
         if abs(Decimal(value).remainder_near(Decimal(motor['res'])))<1e-10:
