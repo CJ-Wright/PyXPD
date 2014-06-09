@@ -40,9 +40,25 @@ initDet(_conf)
 
 detectorD=dict()
 
-def StartAq():
-    caput()
+def Acquire(state=None):
+    if state in ['Start','start',1]:
+        caput(detectorD['pv']+'Acquire',1)
+    elif state in ['Stop','stop',0]:
+        caput(detectorD['pv']+'Acquire',0)
+    print caget(detectorD['pv']+'DetectorState_RBV')
+    
+def AcquireTime(Time=None):
+    if Time!=None:
+        caput(detectorD['pv']+'AcquireTime',Time)
+    else:
+        caget(detectorD['pv']+'AcquireTime_RBV')
 
+def NumImages(Number=None):
+    if Number!=None and type(Number) is int:
+        caput(detectorD['pv']+'NumImages',Number)
+    else:
+        print('# of Images: '+caget(detectorD['pv']+'NumImagesCounter_RBV'))
+        
 
 def Light_Field():
     """
@@ -56,7 +72,7 @@ def Dark_Field():
     Takes dark field image for subtraction
     """
     Shutter(0)
-    StartAq()
+    Acquire('Start')
     
     pass
 
@@ -115,7 +131,7 @@ def Gain(Frames=None):
         if caget(detectorD['pv']+'PEGainAvailable')==1:
             print 'Gain Available'
         else:
-            print 'Offset not yet available'
+            print 'Gain not yet available'
     else:
         caput(detectorD['pv']+'PENumGainFrames',Frames)
         print 'Starting Gain aquesition'
@@ -128,4 +144,5 @@ def Gain(Frames=None):
 def load_Offset_and_Gain(Filename=None):
     if Filename==None:
         #GUI LOAD FILE PROMPT
-    
+    #Parse Directory from Filename
+    #
