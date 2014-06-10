@@ -56,10 +56,11 @@ def AcquireTime(Time=None):
 def NumImages(Number=None):
     if Number!=None and type(Number) is int:
         caput(detectorD['pv']+'NumImages',Number)
+    elif type(Number) is not int:
+        print 'The number of images to be generated must be an integer %s is not an integer' % (Number,)
     else:
         print('# of Images: '+caget(detectorD['pv']+'NumImagesCounter_RBV'))
         
-
 def Light_Field():
     """
     Takes light field image for future masking use.
