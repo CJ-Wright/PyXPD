@@ -11,6 +11,7 @@ def __loadConfig():
     import os.path
     import ConfigParser
     cf=ConfigParser.SafeConfigParser()
+    cf.optionxform=str
     cf.read([
         '/etc/XPD.conf',
         os.path.expanduser('~/XPD.conf'),

@@ -15,65 +15,123 @@ import cothread
 from cothread.catools import *
 from dataapi.config._conf import _conf
 import numpy as np
-import os.path
+import os
 
 
 def initDet(_conf):
+    confail={}
+    conpass={}
     print 'Connecitng Dector'
-    try:
-        for option in _conf.options('PVs'):
-            if 'det' in str(_conf.get('PVs',option)):
-                connect(_conf.get('PVs',option))
+    for option in _conf.options('Detector PVs'):
+        try:
+            connect(_conf.get('Detector PVs',option), timeout=0)
+            print 'PV passed:', option
+            conpass[option]=_conf.get('Detector PVs',option)
+        except:
+            try:
+                getv=caget(_conf.get('Detector PVs',option))
+                print 'PV get passed:', option, getv
+            except:
+                print 'PV failed:', option            
+                confail[option]=_conf.get('Detector PVs',option)
+                pass
+    if confail=={}:
         print 'Detector initialization complete'
-    except:
-        raise Exception('Some of the detectors were not found or could not connect\
-        , namely:\n %s, pv=%s'% (option,_conf.get('PVs',option)))
-    print 'Finding offset/gain/bad pixel correction files'
-    try:
-        for option in _conf.options('Detector files'):
-            os.path.isfile(option)
-    except:
-        raise Exception('Some of the files were not found or could not connect\
-        , namely:\n %s, pv=%s'% (option,_conf.get('Detector files',option)))
+    else:
+        print 'Some PVs did not load, see confail'
+    return confail, conpass
+
         
-initDet(_conf)
+confail,conpass=initDet(_conf)
 
-detectorD=dict()
+_detectorD=dict()
+for option in _conf.options('Detector PVs'):
+    _detectorD[option]=_conf.get('Detector PVs',option)
 
-def Acquire(state=None):
-    if state in ['Start','start',1]:
-        caput(detectorD['pv']+'Acquire',1)
-    elif state in ['Stop','stop',0]:
-        caput(detectorD['pv']+'Acquire',0)
-    print caget(detectorD['pv']+'DetectorState_RBV')
+#XXX:This function may not work on PE detectors 'File (None of the file parameters in NDFile)'
+def SetFile(dirname=None,filename=None, file_format=None,
+            metadata=None, increment=None):
+                
+    if filename is not None:
+        internalfilename, ext= os.path.splitext(filename)
+        
+        #File Numbering Logic block
+        if increment is 'Auto':
+            internalfilename=internalfilename+'(Meta'+metadata+')'
+#            caput(detectorD['pv']+'FileNumber',0)
+            caput(_detectorD['autoi'],1)
+        elif increment is not None:
+            internalfilename=internalfilename+'(Meta'+metadata+')'+str(increment)
+        else:
+            internalfilename=internalfilename+'(Meta'+metadata+')'
+        
+        if os.path.exists(dirname) is False:
+            print 'The directory %s does not exist, would you like to make it?'
+            os.mkdir(dirname)
+#XXX:Need to set file format
+        internalpath=os.path.join(dirname, internalfilename)
+        if os.path.exists(internalpath) is True:
+            print 'File already exists, please choose another file'
+        else:
+    #        path,destfile=os.path.split(internalpath)
+            if increment is 'Auto':
+                caput(_detectorD['file_temp'],internalpath+'_%4.4d'+file_format)
+            else:
+                caput(_detectorD['file_temp'],internalpath+file_format)
     
+def Acquire(state=None,subs=None,Time=None):
+    AcquireTime(Time)
+    Exposures(subs)
+    if state in ['Start','start',1]:
+        caput(detectorD['aq'],1)
+    elif state in ['Stop','stop',0]:
+        caput(detectorD['aq'],0)
+    print caget(detectorD['status'])
+    return caget(detectorD['status'])
 def AcquireTime(Time=None):
     if Time!=None:
-        caput(detectorD['pv']+'AcquireTime',Time)
+        caput(_detectorD['acquiretime'],Time)
     else:
-        caget(detectorD['pv']+'AcquireTime_RBV')
+        print caget(_detectorD['acquiretimerbv'])
+        return caget(_detectorD['acquiretimerbv'])
 
 def NumImages(Number=None):
     if Number!=None and type(Number) is int:
-        caput(detectorD['pv']+'NumImages',Number)
+        caput(_detectorD['NumImages'],Number)
     elif type(Number) is not int:
         print 'The number of images to be generated must be an integer %s is not an integer' % (Number,)
     else:
-        print('# of Images: '+caget(detectorD['pv']+'NumImagesCounter_RBV'))
-        
+        print('# of Images: '+caget(_detectorD['NumImagesRBV']))
+        return caget(_detectorD['NumImagesRBV'])
+
+def Exposures(exp=None):
+    if exp is not None:
+        caput(_detectorD['NumExp'],exp)
+    else:
+        print caget(_detectorD['NumExpRBV'])
+        return caget(_detectorD['NumExpRBV'])
 def Light_Field():
     """
     Takes light field image for future masking use.
     """
-        
+    #turn on source
+    Acquire('Start')
     pass
 
-def Dark_Field():
+def Dark_Field(dirname=None,filename=None, file_format=None,
+            metadata=None, increment=None,Dark_subframes=None, Dark_exp_time=None):
     """
     Takes dark field image for subtraction
     """
+    SetFile(dirname=pathname,filename=filename+'.dark', file_format=file_format,
+            metadata=Metadata, increment=None)
+    
+    print 'Write dark file to:'
+    print caget(detectorD['pv']+'FileTemplate_RBV')
+    
     Shutter(0)
-    Acquire('Start')
+    
+    Acquire('Start', Dark_exp_time)
     
     pass
 
@@ -94,56 +152,3 @@ def Shutter(state=None):
         Shutter()
 
 
-def Offset(Frames=None):
-    """
-    Reports on the status of the internal offset correction and aquires offset correction
-    
-    Parameters
-    ----------
-    Frames: int
-        Number of frames to aquire for the offset correction
-    
-    """
-    if Frames==None:
-        if caget(detectorD['pv']+'PEOffsetAvailable')==1:
-            print 'Offset Available'
-        else:
-            print 'Offset not yet available'
-    else:
-        caput(detectorD['pv']+'PENumOffsetFrames',Frames)
-        print 'Starting offset aquesition'
-        caput(detectorD['pv']+'PEAcquireOffset',1)
-        while caget(detectorD['pv']+'PECurrentOffsetFrame')!=Frames:
-            print 'Collecting frame number '+str(caget(detectorD['pv']+'PECurrentOffsetFrame'))
-        print 'Finished offset aquesition, offset now in use'
-        caput(detectorD['pv']+'PEUseOffset',1)
-
-def Gain(Frames=None):
-    """
-    Reports on the status of the internal offset correction and aquires offset correction
-    
-    Parameters
-    ----------
-    Frames: int
-        Number of frames to aquire for the offset correction
-    
-    """
-    if Frames==None:
-        if caget(detectorD['pv']+'PEGainAvailable')==1:
-            print 'Gain Available'
-        else:
-            print 'Gain not yet available'
-    else:
-        caput(detectorD['pv']+'PENumGainFrames',Frames)
-        print 'Starting Gain aquesition'
-        caput(detectorD['pv']+'PEAcquireOffset',1)
-        while caget(detectorD['pv']+'PECurrentGainFrame')!=Frames:
-            print 'Collecting frame number '+str(caget(detectorD['pv']+'PECurrentGainFrame'))
-        print 'Finished Gain aquesition, Gain now in use'
-        caput(detectorD['pv']+'PEUseGain',1)
-
-def load_Offset_and_Gain(Filename=None):
-    if Filename==None:
-        #GUI LOAD FILE PROMPT
-    #Parse Directory from Filename
-    #
