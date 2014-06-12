@@ -18,7 +18,7 @@ Design Notes:
         Some field for dark field acquisition pattern
         Gain/offset correction information:
             Use
-            Filename to use or aquire new
+            Filename to use or acquire new
             
 """
 from xpd_architecture.dataapi.motion.motors.status import *
@@ -27,40 +27,58 @@ from xpd_architecture.dataapi.areaDetector.DetPE import *
 import cothread
 from cothread.catools import *
 from xpd_architecture.dataapi.config._conf import _conf
+import time
 
 
 """Detector Commands"""
 
 
-def prep_experiment(inputgain={'Use': True, 'State': 'Default', 'OldFile':True}):
+def prep_experiment(inputgain={'Use': True, 'State': 'Default', 'OldFile':True,'Frames':10},
+                    inputoffset={'Use': True, 'State': 'Default', 'OldFile':True,'Frames':10},
+                    inputbadpixel=dict()):
     """
     This function prepares the detector for an experiment, by checking the various detector based corrections and \
     retakeing any if nessisary.  This also checks for available x-rays
     :param inputgain:
-    :return:
+    :return
     """
     # Confirm X-rays
-    #Tune Mono?
 
     #load Gain file, if old take another gain file
-    if inputgain['Use'] is not False:
+    if inputgain['Use'] is True:
         Gainfile = load_Gain(_conf.get('Single Default', 'Gain File'))
         st = os.stat(Gainfile)
         age = st.st_mtime
-
-        if age < _conf.get('Single Default', 'Gain_age') or inputgain['State'] is 'New' or Gain() is 0:
-            print 'Taking new gain measurement'
-            Gain(False, Frames=10)
-            Gain(Use=True)
+        if inputgain['OldFile'] is False:
+            if age < _conf.get('Single Default', 'Gain_age')-time.time or inputgain['State'] is 'New' or Gain() is 0:
+                # Take Gain images, using default settings, or other
+                print 'Taking new gain measurement'
+                if inputgain['Frames'] is 'Default':
+                    Gain(False, Frames=_conf.get('Single Default', 'Gain_Frames'))
+                else:
+                    Gain(False, Frames=inputgain['Frames'])
+                Gain(Use=True)
     else:
         Gain(False)
 
-
-    # Take Gain images, using default settings, or other
-    #OR Load Gain
     #Check Offset age
     #Take Offset images, using default settings or other
-    #OR Load Gain
+    if inputoffset['Use'] is True:
+        Offsetfile = load_Offset(_conf.get('Single Default', 'Offset File'))
+        st = os.stat(Offsetfile)
+        age = st.st_mtime
+        if inputoffset['OldFile'] is False:
+            if age < _conf.get('Single Default', 'Offset_age')-time.time or inputoffset['State'] is 'New' or Offset() is 0:
+                # Take Offset images, using default settings, or other
+                print 'Taking new gain measurement'
+                if inputoffset['Frames'] is 'Default':
+                    Offset(False, Frames=_conf.get('Single Default', 'Offset_Frames'))
+                else:
+                    Offset(False, Frames=inputoffset['Frames'])
+                Offset(Use=True)
+    else:
+        Offset(False)
+    #OR Load Offset
     #Check Bad Pixel age
     #Take new Bad Pixel stuff???
     #Load Gain
@@ -117,6 +135,8 @@ def CaptureSingle(pathname=None, filename=None, subframes=None, exp_time=None, *
                        kwargs['Dark_subframes'], kwargs['Dark_exp_time'])
         Shutter(1)
         Acquire('Start', subframes, Time=exp_time)
+        #TODO: Scrubber Block, with scrubbed image analysis?
+        #Dark Image Block
         if kwargs['Dark_pattern'] is 'After' or 'Split':
             print 'Start Dark Image'
             Dark_Field(pathname, filename,

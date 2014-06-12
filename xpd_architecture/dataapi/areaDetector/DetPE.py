@@ -13,6 +13,7 @@ from xpd_architecture.dataapi.config._conf import _conf
 import numpy as np
 import os
 
+
 def initDet(_conf):
     confail={}
     conpass={}

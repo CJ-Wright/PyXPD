@@ -25,10 +25,11 @@ z='Motor PVs'
 config.add_section(z)
 config.set(z, 'samx', 'test:motorx1')
 config.set(z, 'samy', 'test:motorx2')
-z='Util PVs'
+
+z='Count PVs'
 config.add_section(z)
 
-config.set(z, 'PhD', 'test:sensor1')
+config.set(z, 'PhotoD', 'test:sensor1')
 
 #DETECTOR PVS
 d='13SIM1:'
@@ -64,6 +65,7 @@ config.set(z,'AutoI', d+s+'AutoIncrement')
 config.set(z,'AutoIRBV',d+s+'AutoIncrement_RBV')
 config.set(z, 'File_Temp', d+s+'FileTemplate')
 config.set(z,'FullName',d+s+'FullFileName_RBV')
+config.set(z, 'FileNum', d+s+'FileNumber')
 
 z='PE PVs'
 s='cam1:'
