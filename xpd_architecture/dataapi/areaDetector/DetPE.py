@@ -9,7 +9,7 @@ Use is subject to license terms and conditions.
 
 import cothread
 from cothread.catools import *
-from dataapi.config._conf import _conf
+from xpd_architecture.dataapi.config._conf import _conf
 import numpy as np
 import os
 

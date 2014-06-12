@@ -1,7 +1,7 @@
 __author__ = 'arkilic'
 import cothread
 from cothread.catools import *
-from dataapi.config._conf import _conf
+from xpd_architecture.dataapi.config._conf import _conf
 import numpy as np
 from decimal import *
 
@@ -9,24 +9,24 @@ getcontext().prec=8
 #read configuration file motor section
 def initmotors(_conf):
     print 'Connecitng motors'
-    try:
-        for option in _conf.options('PVs'):
-            if 'motor' in str(_conf.get('PVs',option)):
-                connect(_conf.get('PVs',option))
-        print 'Motor initialization complete'
-    except:
-        raise Exception('Some of the motors were not found or could not connect\
-        , namely:\n %s, pv=%s'% (option,_conf.get('PVs',option)))
+    for option in _conf.options('Motor PVs'):
+        try:
+            if 'motor' in str(_conf.get('Motor PVs',option)):
+                connect(_conf.get('Motor PVs',option))
+        except:
+            print 'PV failed:', option
+            pass
+    print 'Motor initialization complete'
 initmotors(_conf)
 
 motorD=dict()
-for option in _conf.options('PVs'):
-    if 'motor' in str(_conf.get('PVs',option)):
-        pv=_conf.get('PVs',option)
+for option in _conf.options('Motor PVs'):
+    if 'motor' in str(_conf.get('Motor PVs',option)):
+        pv=_conf.get('Motor PVs',option)
         motorD[option]={'pv':pv,'low':caget(pv+'.LLM'),'high':caget(pv+'.HLM'),'EGU':caget(pv+'.EGU'),'res':caget(pv+'.MRES')}
 
 def trans(alias):
-    return _conf.get('PVs',alias)
+    return _conf.get('Motor PVs',alias)
     
 def move(alias,value,wait=False, printop=False):
     #check final position within limits

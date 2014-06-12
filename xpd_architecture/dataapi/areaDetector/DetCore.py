@@ -13,7 +13,7 @@ Less general aspects are dealt with in the detector specific modules
 """
 import cothread
 from cothread.catools import *
-from dataapi.config._conf import _conf
+from xpd_architecture.dataapi.config._conf import _conf
 import numpy as np
 import os
 
@@ -24,7 +24,7 @@ def initDet(_conf):
     print 'Connecitng Dector'
     for option in _conf.options('Detector PVs'):
         try:
-            connect(_conf.get('Detector PVs',option), timeout=0)
+            connect(_conf.get('Detector PVs',option), timeout=1)
             print 'PV passed:', option
             conpass[option]=_conf.get('Detector PVs',option)
         except:
@@ -44,9 +44,17 @@ def initDet(_conf):
         
 confail,conpass=initDet(_conf)
 
-_detectorD=dict()
+__detectorD=dict()
 for option in _conf.options('Detector PVs'):
-    _detectorD[option]=_conf.get('Detector PVs',option)
+    __detectorD[option]=_conf.get('Detector PVs',option)
+
+def wave_conv_str(data):
+    if type(data) is str:
+        bytearray(data,'ascii')
+    else:
+        arr_bytes = bytes(list(data))
+        arr_string = arr_bytes.decode('utf-8')
+        return arr_string
 
 #XXX:This function may not work on PE detectors 'File (None of the file parameters in NDFile)'
 def SetFile(dirname=None,filename=None, file_format=None,
@@ -58,8 +66,8 @@ def SetFile(dirname=None,filename=None, file_format=None,
         #File Numbering Logic block
         if increment is 'Auto':
             internalfilename=internalfilename+'(Meta'+metadata+')'
-#            caput(detectorD['pv']+'FileNumber',0)
-            caput(_detectorD['autoi'],1)
+#            caput(_detectorD['pv']+'FileNumber',0)
+            caput(__detectorD['autoi'],1)
         elif increment is not None:
             internalfilename=internalfilename+'(Meta'+metadata+')'+str(increment)
         else:
@@ -67,49 +75,51 @@ def SetFile(dirname=None,filename=None, file_format=None,
         
         if os.path.exists(dirname) is False:
             print 'The directory %s does not exist, would you like to make it?'
+            #TODO: Need to put in some sort of interface here.
             os.mkdir(dirname)
-#XXX:Need to set file format
+            #ToDO:Need to set file format
         internalpath=os.path.join(dirname, internalfilename)
         if os.path.exists(internalpath) is True:
             print 'File already exists, please choose another file'
         else:
     #        path,destfile=os.path.split(internalpath)
+    #ToDO:Need to change string over to waveform record
             if increment is 'Auto':
-                caput(_detectorD['file_temp'],internalpath+'_%4.4d'+file_format)
+                caput(__detectorD['file_temp'],internalpath+'_%4.4d'+file_format)
             else:
-                caput(_detectorD['file_temp'],internalpath+file_format)
+                caput(__detectorD['file_temp'],internalpath+file_format)
     
 def Acquire(state=None,subs=None,Time=None):
     AcquireTime(Time)
     Exposures(subs)
     if state in ['Start','start',1]:
-        caput(detectorD['aq'],1)
+        caput(_detectorD['aq'],1)
     elif state in ['Stop','stop',0]:
-        caput(detectorD['aq'],0)
-    print caget(detectorD['status'])
-    return caget(detectorD['status'])
+        caput(_detectorD['aq'],0)
+    print caget(_detectorD['status'])
+    return caget(_detectorD['status'])
 def AcquireTime(Time=None):
     if Time!=None:
-        caput(_detectorD['acquiretime'],Time)
+        caput(__detectorD['acquiretime'],Time)
     else:
-        print caget(_detectorD['acquiretimerbv'])
-        return caget(_detectorD['acquiretimerbv'])
+        print caget(__detectorD['acquiretimerbv'])
+        return caget(__detectorD['acquiretimerbv'])
 
 def NumImages(Number=None):
     if Number!=None and type(Number) is int:
-        caput(_detectorD['NumImages'],Number)
+        caput(__detectorD['NumImages'],Number)
     elif type(Number) is not int:
         print 'The number of images to be generated must be an integer %s is not an integer' % (Number,)
     else:
-        print('# of Images: '+caget(_detectorD['NumImagesRBV']))
-        return caget(_detectorD['NumImagesRBV'])
+        print('# of Images: '+caget(__detectorD['NumImagesRBV']))
+        return caget(__detectorD['NumImagesRBV'])
 
 def Exposures(exp=None):
     if exp is not None:
-        caput(_detectorD['NumExp'],exp)
+        caput(__detectorD['NumExp'],exp)
     else:
-        print caget(_detectorD['NumExpRBV'])
-        return caget(_detectorD['NumExpRBV'])
+        print caget(__detectorD['NumExpRBV'])
+        return caget(__detectorD['NumExpRBV'])
 def Light_Field():
     """
     Takes light field image for future masking use.
@@ -127,12 +137,11 @@ def Dark_Field(dirname=None,filename=None, file_format=None,
             metadata=Metadata, increment=None)
     
     print 'Write dark file to:'
-    print caget(detectorD['pv']+'FileTemplate_RBV')
+    print caget(_detectorD['pv']+'FileTemplate_RBV')
     
     Shutter(0)
-    
+    caget()
     Acquire('Start', Dark_exp_time)
-    
     pass
 
 def Shutter(state=None):

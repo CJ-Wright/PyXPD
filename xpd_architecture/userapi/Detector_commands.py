@@ -21,43 +21,53 @@ Design Notes:
             Filename to use or aquire new
             
 """
-#from dataapi.motion.motors.status import *
-from dataapi.areaDetector.DetCore import *
-from dataapi.areaDetector.DetPE import *
+from xpd_architecture.dataapi.motion.motors.status import *
+from xpd_architecture.dataapi.areaDetector.DetCore import *
+from xpd_architecture.dataapi.areaDetector.DetPE import *
 import cothread
 from cothread.catools import *
-from dataapi.config._conf import _conf
-
+from xpd_architecture.dataapi.config._conf import _conf
 
 
 """Detector Commands"""
-def prep_experiment():
-    #Confirm X-rays
-    #Tune Mono?    
-    #Check Gain age
 
-#load Gain file, if old take another gain file
-#        if kwargs['Gain'] is 'Default':
-#            Gainfile=Load_Gain(_conf.get('Single Default', 'Gain File'))
-#        st=os.stat(Gainfile)
-#        age=st.st_mtime
-#        if age<Gain_low_age
-#        if Gain() is 0:
-#            print 'Taking new gain measurement'    
-    
-        #Take Gain images, using default settings, or other
-        #OR Load Gain
+
+def prep_experiment(inputgain={'Use': True, 'State': 'Default', 'OldFile':True}):
+    """
+    This function prepares the detector for an experiment, by checking the various detector based corrections and \
+    retakeing any if nessisary.  This also checks for available x-rays
+    :param inputgain:
+    :return:
+    """
+    # Confirm X-rays
+    #Tune Mono?
+
+    #load Gain file, if old take another gain file
+    if inputgain['Use'] is not False:
+        Gainfile = load_Gain(_conf.get('Single Default', 'Gain File'))
+        st = os.stat(Gainfile)
+        age = st.st_mtime
+
+        if age < _conf.get('Single Default', 'Gain_age') or inputgain['State'] is 'New' or Gain() is 0:
+            print 'Taking new gain measurement'
+            Gain(False, Frames=10)
+            Gain(Use=True)
+    else:
+        Gain(False)
+
+
+    # Take Gain images, using default settings, or other
+    #OR Load Gain
     #Check Offset age
-        #Take Offset images, using default settings or other
-        #OR Load Gain
+    #Take Offset images, using default settings or other
+    #OR Load Gain
     #Check Bad Pixel age
-        #Take new Bad Pixel stuff???
-        #Load Gain
+    #Take new Bad Pixel stuff???
+    #Load Gain
     return True
-    pass
 
-def CaptureSingle(pathname=None,filename=None,subframes=None, exp_time=None,
-                  Dark_subframes=None, Dark_exp_time=None, Dark_pattern=None):
+
+def CaptureSingle(pathname=None, filename=None, subframes=None, exp_time=None, **kwargs):
     """
     Captures an x-ray image creating a single file out of subframes with set \
     integration times
@@ -66,6 +76,7 @@ def CaptureSingle(pathname=None,filename=None,subframes=None, exp_time=None,
                   subframes=None, exp_time=None,
                   Dark_subframes=None, Dark_exp_time=None Dark_pattern=None,
                   Metadata=None,
+                  Prep_bypass=False
                   Gain=None,
                   Offset=None,
                   Bad_pixel=None,
@@ -90,57 +101,31 @@ def CaptureSingle(pathname=None,filename=None,subframes=None, exp_time=None,
     A: 2D array
         Numpy array which represents the image pixels
     """
-    if prep_experiment() is True:
-        for key in kwargs:
-            if kwargs[key] is None:
-                kwargs[key]= _conf.get('Single Default', key)
-        
-                
-        #Dark Image Block
-        if Dark_pattern is 'Before' or 'Split':
+    if kwargs['Prep_bypass'] is False:
+        prep_experiment(kwargs['Gain'], kwargs['Offset'], kwargs['Bad_pixel'])
+    for element in ['Dark_subframes', 'Dark_exp_time', 'Dark_pattern']:
+        if kwargs.has_key(element) is None:
+            kwargs[element] = _conf.get('Single Default', element)
+
+        # Dark Image Block
+        if kwargs['Dark_pattern'] is 'Before' or 'Split':
             print 'Start Dark Image'
-            if Dark_pattern is 'Split':
-                Dark_subframes=np.ceil(Dark_subframes/2)
-            Dark_Field(dirname,filename, file_format, metadata, increment,
-                       Dark_subframes, Dark_exp_time)
+            if kwargs['Dark_pattern'] is 'Split':
+                kwargs['Dark_subframes'] = np.ceil(kwargs['Dark_subframes'] / 2)
+            Dark_Field(pathname, filename,
+                       kwargs['file_format'], kwargs['metadata'], kwargs['increment'],
+                       kwargs['Dark_subframes'], kwargs['Dark_exp_time'])
         Shutter(1)
-        Acquire('Start',subframes,Time=exp_time)
-        if Dark_pattern is 'After' or 'Split':
+        Acquire('Start', subframes, Time=exp_time)
+        if kwargs['Dark_pattern'] is 'After' or 'Split':
             print 'Start Dark Image'
-            Dark_Field(dirname, filename, file_format, metadata, increment,
-                       Dark_subframes, Dark_exp_time)
-        
-            
-                       
-            
-            
+            Dark_Field(pathname, filename,
+                       kwargs['file_format'], kwargs['metadata'], kwargs['increment'],
+                       kwargs['Dark_subframes'], kwargs['Dark_exp_time'])
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def CaptureMulti(base_filename, filename_iterator,subframes, seconds_per_subframe,offset=None, Automatic=False, **kwargs):
+def CaptureMulti(base_filename, filename_iterator, subframes, seconds_per_subframe, offset=None, Automatic=False,
+                 **kwargs):
     """
     Captures an x-ray image creating many files out of subframes with set \
     integration times
@@ -165,6 +150,6 @@ def CaptureMulti(base_filename, filename_iterator,subframes, seconds_per_subfram
     A: 3D array
         Numpy array which represents the images
     """
-#check that shutter is open
-#take darkfield image? or do this inside the core?    
+    # check that shutter is open
+    #take darkfield image? or do this inside the core?
     pass
