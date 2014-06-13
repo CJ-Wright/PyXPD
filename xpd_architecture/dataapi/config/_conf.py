@@ -21,3 +21,24 @@ def __loadConfig():
     return cf
     
 _conf=__loadConfig()
+
+def _initDet(_conf=_conf, section=None):
+    confail={}
+    conpass={}
+    print 'Connecitng '+ section
+    for option in _conf.options(section):
+        try:
+            connect(_conf.get(section, option), timeout=1)
+            print 'PV passed:', option
+            conpass[option]=_conf.get(section, option)
+        except:
+            print 'PV failed:', option
+            confail[option]=_conf.get(section ,option)
+            pass
+#            raise Exception('Some of the detectors were not found or could not connect, \
+#            namely:\n %s, pv=%s'% (option,_conf.get('Detector PVs',option)))
+#    print 'failed: \n', confail
+#    print '\n\n'
+#    print 'passed: \n', conpass
+    print section+'connection complete'
+    return confail, conpass

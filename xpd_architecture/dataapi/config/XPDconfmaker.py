@@ -31,6 +31,26 @@ config.add_section(z)
 
 config.set(z, 'PhotoD', 'test:sensor1')
 
+z='Gas Valve PVs'
+config.add_section(z)
+config.set(z, 'Valve_1', 'PVNAMEHERE')
+config.set(z, 'Valve_2', 'PVNAMEHERE')
+
+#Gas Assignment Convention, {valve:VALVENAME, new_position:POSITION on VALVENAME]
+z='Default Gas Assignments'
+config.add_section(z)
+config.set(z, 'H2', {'valve':'Valve_1','new_position': 0})
+config.set(z, 'Xe', {'valve':'Valve_1','new_position': 1})
+config.set(z, 'O2', {'valve':'Valve_1','new_position': 2})
+#ETC
+
+z='Example User Gas Assignments'
+config.add_section(z)
+config.set(z, 'F2', {'valve':'Valve_1','new_position': 0})
+config.set(z, 'FOOF', {'valve':'Valve_1','new_position': 1})
+config.set(z, 'SUPER AWSOME GAS', {'valve':'Valve_2','new_position': 3})
+
+
 #DETECTOR PVS
 d='13SIM1:'
 z='Detector PVs'

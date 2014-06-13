@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="26aa8b55-0cd0-4397-bc56-d31cdd75d2c0" name="Default" comment="Added Counts. Worked on detector module, there were some issues with the interface with the Perkin Elmer detector.  Most were concentrated in the method for storing files.  Additional work may need to be done on the PE based corrections, there was little consensus on how frequently to update the corrections, and there is no current way to obtain a bad pixel file.  Work on the areaDetector module is put on hold, pending more information or a physical detector.">
+    <list default="true" id="26aa8b55-0cd0-4397-bc56-d31cdd75d2c0" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Gas_Valve.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xpd_architecture/userapi/Util_commands.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Counts.py" afterPath="$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Counts.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xpd_architecture/dataapi/areaDetector/DetCore.py" afterPath="$PROJECT_DIR$/xpd_architecture/dataapi/areaDetector/DetCore.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xpd_architecture/dataapi/areaDetector/DetPE.py" afterPath="$PROJECT_DIR$/xpd_architecture/dataapi/areaDetector/DetPE.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xpd_architecture/userapi/Detector_commands.py" afterPath="$PROJECT_DIR$/xpd_architecture/userapi/Detector_commands.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xpd_architecture/dataapi/config/XPDconfmaker.py" afterPath="$PROJECT_DIR$/xpd_architecture/dataapi/config/XPDconfmaker.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xpd_architecture/dataapi/config/_conf.py" afterPath="$PROJECT_DIR$/xpd_architecture/dataapi/config/_conf.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="XPD+_architecture.iws" />
@@ -30,21 +30,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="XPDconfmaker.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/config/XPDconfmaker.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="1935">
+              <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gas_Valve.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Gas_Valve.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="930">
+              <caret line="26" column="19" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+              <folding>
+                <element signature="e#198#249#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Util_commands.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/xpd_architecture/userapi/Util_commands.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4753521" vertical-offset="0" max-vertical-offset="852">
+              <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+              <folding>
+                <element signature="e#197#251#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="status.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/motion/motors/status.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="990">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="930">
               <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Detector_commands.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Detector_commands.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xpd_architecture/userapi/Detector_commands.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0660714" vertical-offset="1458" max-vertical-offset="2310">
-              <caret line="137" column="9" selection-start-line="137" selection-start-column="9" selection-end-line="137" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="2310">
+              <caret line="38" column="7" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
               <folding>
                 <element signature="e#669#728#0" expanded="true" />
                 <element signature="e#5787#6630#0" expanded="false" />
@@ -53,43 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Counts.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Counts.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="870">
-              <caret line="32" column="27" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
-              <folding>
-                <element signature="e#220#271#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DetPE.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/areaDetector/DetPE.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1575">
-              <caret line="43" column="76" selection-start-line="16" selection-start-column="0" selection-end-line="43" selection-end-column="76" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="DetCore.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/areaDetector/DetCore.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="834" max-vertical-offset="2895">
-              <caret line="72" column="2" selection-start-line="72" selection-start-column="2" selection-end-line="72" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="XPDconfmaker.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/config/XPDconfmaker.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="33" max-vertical-offset="1635">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2895">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="17" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -121,10 +123,13 @@
         <option value="$PROJECT_DIR$/xpd_architecture/dataapi/motion/motors/status.py" />
         <option value="$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Mono.py" />
         <option value="$PROJECT_DIR$/xpd_architecture/dataapi/areaDetector/DetCore.py" />
-        <option value="$PROJECT_DIR$/xpd_architecture/userapi/Detector_commands.py" />
-        <option value="$PROJECT_DIR$/xpd_architecture/dataapi/config/XPDconfmaker.py" />
         <option value="$PROJECT_DIR$/xpd_architecture/dataapi/areaDetector/DetPE.py" />
+        <option value="$PROJECT_DIR$/xpd_architecture/userapi/Detector_commands.py" />
+        <option value="$PROJECT_DIR$/xpd_architecture/dataapi/config/_conf.py" />
         <option value="$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Counts.py" />
+        <option value="$PROJECT_DIR$/xpd_architecture/dataapi/config/XPDconfmaker.py" />
+        <option value="$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Gas_Valve.py" />
+        <option value="$PROJECT_DIR$/xpd_architecture/userapi/Util_commands.py" />
       </list>
     </option>
   </component>
@@ -485,7 +490,11 @@
       <created>1402537430401</created>
       <updated>1402537430401</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added Counts. Worked on detector module, there were some issues with the interface with the Perkin Elmer detector.  Most were concentrated in the method for storing files.  Additional work may need to be done on the PE based corrections, there was little consensus on how frequently to update the corrections, and there is no current way to obtain a bad pixel file.  Work on the areaDetector module is put on hold, pending more information or a physical detector.">
+      <created>1402609710171</created>
+      <updated>1402609710171</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -510,24 +519,24 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1400" height="1023" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1446" y="201" width="521" height="552" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299435" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299435" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3299435" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299435" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25445104" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1454006" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32881355" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3378531" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299435" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -711,6 +720,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Counts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2112676" vertical-offset="0" max-vertical-offset="852">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#220#271#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/config/_conf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="735">
+          <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/areaDetector/DetPE.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1575">
+          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/areaDetector/DetCore.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2895">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="17" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xpd_architecture/userapi/Detector_commands.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="2310">
+          <caret line="38" column="7" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
+          <folding>
+            <element signature="e#669#728#0" expanded="true" />
+            <element signature="e#5787#6630#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/motion/motors/status.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="990">
@@ -719,55 +773,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/config/_conf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="852">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/config/XPDconfmaker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="33" max-vertical-offset="1635">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="1935">
+          <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/areaDetector/DetPE.py">
+    <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Gas_Valve.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1575">
-          <caret line="43" column="76" selection-start-line="16" selection-start-column="0" selection-end-line="43" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Counts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="870">
-          <caret line="32" column="27" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="930">
+          <caret line="26" column="19" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
           <folding>
-            <element signature="e#220#271#0" expanded="true" />
+            <element signature="e#198#249#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/areaDetector/DetCore.py">
+    <entry file="file://$PROJECT_DIR$/xpd_architecture/userapi/Util_commands.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="834" max-vertical-offset="2895">
-          <caret line="72" column="2" selection-start-line="72" selection-start-column="2" selection-end-line="72" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xpd_architecture/userapi/Detector_commands.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0660714" vertical-offset="1458" max-vertical-offset="2310">
-          <caret line="137" column="9" selection-start-line="137" selection-start-column="9" selection-end-line="137" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.4753521" vertical-offset="0" max-vertical-offset="852">
+          <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
           <folding>
-            <element signature="e#669#728#0" expanded="true" />
-            <element signature="e#5787#6630#0" expanded="false" />
+            <element signature="e#197#251#0" expanded="true" />
           </folding>
         </state>
       </provider>
