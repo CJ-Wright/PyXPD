@@ -46,9 +46,9 @@ config.set(z, 'O2', {'valve':'Valve_1','new_position': 2})
 
 z='Example User Gas Assignments'
 config.add_section(z)
-config.set(z, 'F2', {'valve':'Valve_1','new_position': 0})
+config.set(z, 'F2', {'valve':'Valve_1', 'new_position': 0})
 config.set(z, 'FOOF', {'valve':'Valve_1','new_position': 1})
-config.set(z, 'SUPER AWSOME GAS', {'valve':'Valve_2','new_position': 3})
+config.set(z, 'SUPER AWESOME GAS', {'valve':'Valve_2','new_position': 3})
 
 
 #DETECTOR PVS

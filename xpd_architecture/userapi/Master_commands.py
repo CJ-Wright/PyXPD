@@ -6,25 +6,12 @@ Use is subject to license terms and conditions.
 
 @author: Christopher J. Wright
 """
-from userapi.Motor_commands import *
-from userapi.Detector_commands import *
+from userapi import *
 import cothread
 from cothread.catools import *
 from dataapi.config._conf import _conf
 
-def _initpvs(_conf):
-    """
-    Double checks connection to Instruments"""
-    print 'Connecting instruments'
-    try:
-        for option in _conf.options('PVs'):
-            connect(_conf.get('PVs',option))
-        print 'Instrument initialization complete'
-    except:
-        raise Exception('Some of the instruments were not found or connected\
-        , namely %s'% (option,))
-                
-
+##TODO:Rename _initDet to _initPVs and put in every dataapi module that uses PVs
 def printf(value):
 #    print value, test function
     return value

@@ -56,6 +56,23 @@ def resolution(**kwargs):
     else:
         for key in kwargs.keys():
             print motorD[key]['res']
-            
-            
-        
+
+
+def multi_move(aliases=None, positions=None):
+    assert len(aliases)==len(positions)
+    multiD={}
+    for number in enumerate(aliases):
+        motor = motorD[aliases[number]]
+        if motor['low']<= positions[number] <=motor['high']:
+            if abs(Decimal(positions[number]).remainder_near(Decimal(motor['res'])))<1e-10:
+                motorD[motor['pv']]=positions[number]
+            else:
+                raise Exception('Move specified with more precision than instrument allows')
+        else:
+            raise Exception('Out of Bounds, the soft limit has been reached')
+
+    for key, value in multiD:
+        caput(key, value, wait=False)
+#TODO: Figure out appropriate while loop for checking if all motor moves are finished
+    while True:
+        pass
