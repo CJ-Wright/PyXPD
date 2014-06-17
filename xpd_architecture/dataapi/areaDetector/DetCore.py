@@ -37,8 +37,7 @@ def wave_conv_str(data):
     if type(data) is str:
         return bytearray(data,'ascii')
     else:
-        arr_bytes = bytes(list(data))
-        arr_string = arr_bytes.decode('utf-8')
+        arr_string="".join(map(chr,(list(data)))[:-1])
         return arr_string
 
 
@@ -57,12 +56,18 @@ def SetFile(dirname=None,filename=None,
 
     if save=='Auto':
         NDAutoSave=1
+    else:
+        NDAutoSave=0
+    caput(__detectorD['AutoS'], NDAutoSave)
 
-    if file_format in __fileD['supFiles']:
-        file_format, ext=file_format.split(':')
-        NDFileFormat= file_format
-        caput(__detectorD['Format'], NDFileFormat)
-        end=ext
+    formats=__fileD['SupFiles'].split(',')
+    for ff in formats:
+        file_formatname, ext=ff.split(':')
+        if file_format==file_formatname:
+            NDFileFormat= file_format
+            caput(__detectorD['Format'], NDFileFormat)
+            end=ext
+            break
     else:
         caput(__detectorD['Format'], 'TIFF')
         end='.tif'
@@ -86,7 +91,7 @@ def SetFile(dirname=None,filename=None,
             caput(__detectorD['FileNum'], NDFileNumber)
             NDFileTemplate="%s%s%4.4d"+end
     else:
-        NDFileTemplate="%s%s%"+end
+        NDFileTemplate="%s%s"+end
     caput(__detectorD['File_Temp'],wave_conv_str(NDFileTemplate))
     return wave_conv_str(caget(__detectorD['FullName']))
 
@@ -175,5 +180,6 @@ def Shutter(state=None):
         Shutter()
 
 
-SetFile(dirname='/home/xpdlabuser/Spyder_Projects/XPD+_architecture/test',filename='test1',
+print SetFile(dirname='/home/xpdlabuser/Spyder_Projects/XPD+_architecture/test',filename='test1',
             metadata=None, increment=None, save='Auto', file_format='TIFF')
+print wave_conv_str(caget(__detectorD['File_Temp']+'_RBV'))
