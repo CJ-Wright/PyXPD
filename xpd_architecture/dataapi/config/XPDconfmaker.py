@@ -10,7 +10,7 @@ Use is subject to license terms and conditions.
 import ConfigParser
 import time
 
-
+#TODO: seperate beamline scientist from user configs
 config=ConfigParser.SafeConfigParser()
 config.optionxform=str
 

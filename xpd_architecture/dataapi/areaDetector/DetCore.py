@@ -13,12 +13,12 @@ Less general aspects are dealt with in the detector specific modules
 """
 import cothread
 from cothread.catools import *
-from xpd_architecture.dataapi.config._conf import _conf, _initPV
+from xpd_architecture.dataapi.config._conf import _conf, __initPV
 import numpy as np
 import os
 
 
-confail,conpass=_initPV(_conf, 'Detector PVs')
+confail,conpass=__initPV(_conf, 'Detector PVs')
 
 __detectorD=dict()
 for option in _conf.options('Detector PVs'):
@@ -35,7 +35,7 @@ def wave_conv_str(data):
     :return string or bytes: Human or spec readable translation of the data.
     """
     if type(data) is str:
-        return (data,'ascii')
+        return bytearray(data,'ascii')
     else:
         arr_bytes = bytes(list(data))
         arr_string = arr_bytes.decode('utf-8')
@@ -48,6 +48,7 @@ def SetFile(dirname=None,filename=None,
     if filename is not None:
         internalfilename, ext= os.path.splitext(filename)
         NDFileName= internalfilename
+        wave_conv_str(NDFileName)
         caput(__detectorD['FileName'], wave_conv_str(NDFileName))
 
     if dirname is not None and os.path.exists(dirname):
@@ -86,6 +87,8 @@ def SetFile(dirname=None,filename=None,
             NDFileTemplate="%s%s%4.4d"+end
     else:
         NDFileTemplate="%s%s%"+end
+    caput(__detectorD['File_Temp'],wave_conv_str(NDFileTemplate))
+    return wave_conv_str(caget(__detectorD['FullName']))
 
 
 def Acquire(state=None,subs=None,Time=None):
@@ -172,3 +175,5 @@ def Shutter(state=None):
         Shutter()
 
 
+SetFile(dirname='/home/xpdlabuser/Spyder_Projects/XPD+_architecture/test',filename='test1',
+            metadata=None, increment=None, save='Auto', file_format='TIFF')
