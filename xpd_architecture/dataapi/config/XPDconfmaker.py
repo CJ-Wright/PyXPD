@@ -39,16 +39,17 @@ config.set(z, 'Valve_2', 'PVNAMEHERE')
 #Gas Assignment Convention, {valve:VALVENAME, new_position:POSITION on VALVENAME]
 z='Default Gas Assignments'
 config.add_section(z)
-config.set(z, 'H2', {'valve':'Valve_1','new_position': 0})
-config.set(z, 'Xe', {'valve':'Valve_1','new_position': 1})
-config.set(z, 'O2', {'valve':'Valve_1','new_position': 2})
-#ETC
-
-z='Example User Gas Assignments'
-config.add_section(z)
-config.set(z, 'F2', {'valve':'Valve_1', 'new_position': 0})
-config.set(z, 'FOOF', {'valve':'Valve_1','new_position': 1})
-config.set(z, 'SUPER AWESOME GAS', {'valve':'Valve_2','new_position': 3})
+#TODO: dictionaries don't work here need to put in some parsing equipment into the valve and change these records
+# config.set(z, 'H2', {'valve':'Valve_1','new_position': 0})
+# config.set(z, 'Xe', {'valve':'Valve_1','new_position': 1})
+# config.set(z, 'O2', {'valve':'Valve_1','new_position': 2})
+# #ETC
+#
+# z='Example User Gas Assignments'
+# config.add_section(z)
+# config.set(z, 'F2', {'valve':'Valve_1', 'new_position': 0})
+# config.set(z, 'FOOF', {'valve':'Valve_1','new_position': 1})
+# config.set(z, 'SUPER AWESOME GAS', {'valve':'Valve_2','new_position': 3})
 
 
 #DETECTOR PVS
@@ -83,6 +84,8 @@ config.set(z,'Capture',d+s+'Capture')
 config.set(z,'CaptureNum',d+s+'NumCapture')
 config.set(z,'AutoI', d+s+'AutoIncrement')
 config.set(z,'AutoIRBV',d+s+'AutoIncrement_RBV')
+config.set(z, 'Path', d+s+'FilePath')
+config.set(z, 'FileName', d+s+'FileName')
 config.set(z, 'File_Temp', d+s+'FileTemplate')
 config.set(z,'FullName',d+s+'FullFileName_RBV')
 config.set(z, 'FileNum', d+s+'FileNumber')
@@ -112,6 +115,9 @@ config.set(z, 'CorrDir', d+s+'PECorrectionsDir')
 config.set(z, 'LoadCorr', d+s+'PELoadCorrections')
 config.set(z, 'SaveCorr', d+s+'PESaveCorrections')
 
+z='Detector files'
+config.add_section(z)
+config.set(z, 'SupFiles', 'TIFF, netCDF')
 #Correction files
 z='PE files'
 config.add_section(z)

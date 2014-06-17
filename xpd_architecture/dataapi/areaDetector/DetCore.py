@@ -13,46 +13,19 @@ Less general aspects are dealt with in the detector specific modules
 """
 import cothread
 from cothread.catools import *
-from xpd_architecture.dataapi.config._conf import _conf
+from xpd_architecture.dataapi.config._conf import _conf, _initPV
 import numpy as np
 import os
 
 
-def initDet(_conf):
-    """
-
-    :param _conf: config parser instance
-        configuration file for XPD beamline
-    :return: confail: PVs that failed to be connected
-    :return conpass: PVs that passed connection test
-    """
-    confail={}
-    conpass={}
-    print 'Connecitng Dector'
-    for option in _conf.options('Detector PVs'):
-        try:
-            connect(_conf.get('Detector PVs',option), timeout=1)
-            print 'PV passed:', option
-            conpass[option]=_conf.get('Detector PVs',option)
-        except:
-            try:
-                getv=caget(_conf.get('Detector PVs',option))
-                print 'PV get passed:', option, getv
-            except:
-                print 'PV failed:', option            
-                confail[option]=_conf.get('Detector PVs',option)
-                pass
-    if confail=={}:
-        print 'Detector initialization complete'
-    else:
-        print 'Some PVs did not load, see confail'
-    return confail, conpass
-
-confail,conpass=initDet(_conf)
+confail,conpass=_initPV(_conf, 'Detector PVs')
 
 __detectorD=dict()
 for option in _conf.options('Detector PVs'):
     __detectorD[option]=_conf.get('Detector PVs',option)
+__fileD=dict()
+for option in _conf.options('Detector files'):
+    __fileD[option]=_conf.get('Detector files',option)
 
 
 def wave_conv_str(data):
@@ -68,41 +41,49 @@ def wave_conv_str(data):
         arr_string = arr_bytes.decode('utf-8')
         return arr_string
 
-#ToDO:This function may not work on PE detectors 'File (None of the file parameters in NDFile)'
-#TODO: Rewrite this function to work with file template,
-# TODO:pass variables into appropriate NDFile PVs and the template into template
 
-
-def SetFile(dirname=None,filename=None, file_format=None,
-            metadata=None, increment=None):
+def SetFile(dirname=None,filename=None,
+            metadata=None, increment=None, save='Auto', file_format=None):
                 
     if filename is not None:
         internalfilename, ext= os.path.splitext(filename)
-        
-        #File Numbering Logic block
-        if increment is 'Auto':
-            internalfilename=internalfilename+'(Meta'+metadata+')'
-            caput(__detectorD['FileNum']+'FileNumber', 0)
-            caput(__detectorD['autoi'], 1)
-        elif increment is not None:
-            internalfilename=internalfilename+'(Meta'+metadata+')'+str(increment)
+        NDFileName= internalfilename
+        caput(__detectorD['FileName'], wave_conv_str(NDFileName))
+#TODO: do something about the file extension so it changes with the format change
+    if dirname is not None and os.path.exists(dirname):
+        NDFilePath=dirname
+        caput(__detectorD['Path'], wave_conv_str(NDFilePath))
+
+    if save=='Auto':
+        NDAutoSave=1
+
+    if file_format in __fileD['supFiles']:
+        NDFileFormat= file_format
+        caput(__detectorD['Format'], NDFileFormat)
+    else:
+        caput(__detectorD['Format'], 'TIFF')
+
+    if increment is 'Auto':
+        NDAutoIncrement= 1
+        caput(__detectorD['AutoI'], NDAutoIncrement)
+        NDFileTemplate="%s%s%4.4d.tif"
+
+    elif increment is 'Multi-Auto':
+        NDFileNumber=0
+        NDAutoIncrement=1
+        caput(__detectorD['FileNum'], NDFileNumber)
+        caput(__detectorD['AutoI'], NDAutoIncrement)
+        NDFileTemplate="%s%s%4.4d.tif"
+
+    elif increment is not None:
+        if type(increment) is not int:
+            print 'Only integer increments allowed'
         else:
-            internalfilename=internalfilename+'(Meta'+metadata+')'
-        
-        if os.path.exists(dirname) is False:
-            print 'The directory %s does not exist, would you like to make it?'
-            if raw_input('make directory? y/[n]') is 'y':
-                os.mkdir(dirname)
-            #ToDO:Need to set file format
-        internalpath=os.path.join(dirname, internalfilename)
-        if os.path.exists(internalpath) is True:
-            print 'File already exists, please choose another file'
-        else:
-    #        path,destfile=os.path.split(internalpath)
-            if increment is 'Auto':
-                caput(__detectorD['file_temp'],wave_conv_str(internalpath+'_%4.4d'+file_format))
-            else:
-                caput(__detectorD['file_temp'],internalpath+file_format)
+            NDFileNumber=increment
+            caput(__detectorD['FileNum'], NDFileNumber)
+            NDFileTemplate="%s%s%4.4d.tif"
+    else:
+        NDFileTemplate="%s%s%.tif"
 
 
 def Acquire(state=None,subs=None,Time=None):

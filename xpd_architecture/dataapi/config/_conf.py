@@ -7,6 +7,8 @@ Use is subject to license terms and conditions.
 @author: Christopher J. Wright
 """
 
+from cothread.catools import *
+
 def __loadConfig():
     import os.path
     import ConfigParser
@@ -22,7 +24,8 @@ def __loadConfig():
     
 _conf=__loadConfig()
 
-def _initDet(_conf=_conf, section=None):
+
+def _initPV(_conf=_conf, section=None):
     confail={}
     conpass={}
     print 'Connecitng '+ section
@@ -40,5 +43,5 @@ def _initDet(_conf=_conf, section=None):
 #    print 'failed: \n', confail
 #    print '\n\n'
 #    print 'passed: \n', conpass
-    print section+'connection complete'
+    print section+' connection complete'
     return confail, conpass
