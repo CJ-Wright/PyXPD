@@ -1,29 +1,21 @@
-__author__ = 'arkilic'
+__author__ = 'Christopher J. Wright'
 import cothread
 from cothread.catools import *
-from xpd_architecture.dataapi.config._conf import _conf
+from xpd_architecture.dataapi.config._conf import _conf, __initPV
 import numpy as np
 from decimal import *
 
 getcontext().prec=8
 #read configuration file motor section
-def initmotors(_conf):
-    print 'Connecitng motors'
-    for option in _conf.options('Motor PVs'):
-        try:
-            if 'motor' in str(_conf.get('Motor PVs',option)):
-                connect(_conf.get('Motor PVs',option))
-        except:
-            print 'PV failed:', option
-            pass
-    print 'Motor initialization complete'
-initmotors(_conf)
+
+confail, conpass=__initPV(section='Motor PVs')
 
 motorD=dict()
 for option in _conf.options('Motor PVs'):
     if 'motor' in str(_conf.get('Motor PVs',option)):
         pv=_conf.get('Motor PVs',option)
         motorD[option]={'pv':pv,'low':caget(pv+'.LLM'),'high':caget(pv+'.HLM'),'EGU':caget(pv+'.EGU'),'res':caget(pv+'.MRES')}
+
 
 def trans(alias):
     return _conf.get('Motor PVs',alias)

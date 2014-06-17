@@ -6,17 +6,17 @@ Use is subject to license terms and conditions.
 
 @author: Christopher J. Wright
 """
-from userapi import *
+from xpd_architecture.userapi import *
 import cothread
 from cothread.catools import *
-from dataapi.config._conf import _conf
+from xpd_architecture.dataapi.config._conf import _conf, __initPV
 
-##TODO:Rename _initDet to _initPVs and put in every dataapi module that uses PVs
+
 def printf(value):
 #    print value, test function
     return value
 
 if __name__ == "__main__":
-    _initpvs(_conf)
+    __initPV(_conf)
 #    print('Initial positions:')
 #    print(where())

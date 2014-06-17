@@ -33,23 +33,24 @@ config.set(z, 'PhotoD', 'test:sensor1')
 
 z='Gas Valve PVs'
 config.add_section(z)
-config.set(z, 'Valve_1', 'PVNAMEHERE')
-config.set(z, 'Valve_2', 'PVNAMEHERE')
+config.set(z, 'Valve_1', 'test:motorx3')
+config.set(z, 'Valve_2', 'test:motorx4')
 
-#Gas Assignment Convention, {valve:VALVENAME, new_position:POSITION on VALVENAME]
+#Gas Assignment Convention, VALVENAME,POSITION on VALVENAME
 z='Default Gas Assignments'
 config.add_section(z)
-#TODO: dictionaries don't work here need to put in some parsing equipment into the valve and change these records
-# config.set(z, 'H2', {'valve':'Valve_1','new_position': 0})
-# config.set(z, 'Xe', {'valve':'Valve_1','new_position': 1})
-# config.set(z, 'O2', {'valve':'Valve_1','new_position': 2})
-# #ETC
-#
-# z='Example User Gas Assignments'
-# config.add_section(z)
-# config.set(z, 'F2', {'valve':'Valve_1', 'new_position': 0})
-# config.set(z, 'FOOF', {'valve':'Valve_1','new_position': 1})
-# config.set(z, 'SUPER AWESOME GAS', {'valve':'Valve_2','new_position': 3})
+config.set(z, 'H2', 'Valve_1:0')
+config.set(z, 'Xe', 'Valve_1:1')
+config.set(z, 'O2', 'Valve_1:2')
+config.set(z, 'Valve_2', 'Valve_1:5')
+config.set(z, 'HF', 'Valve_2:2')
+#ETC
+
+z='Example User Gas Assignments'
+config.add_section(z)
+config.set(z, 'F2', 'Valve_1:0')
+config.set(z, 'FOOF', 'Valve_1:2')
+config.set(z, 'SUPER AWESOME GAS', 'Valve_2:2')
 
 
 #DETECTOR PVS
@@ -117,7 +118,7 @@ config.set(z, 'SaveCorr', d+s+'PESaveCorrections')
 
 z='Detector files'
 config.add_section(z)
-config.set(z, 'SupFiles', 'TIFF, netCDF')
+config.set(z, 'SupFiles', 'TIFF:.tif, netCDF:.stuff')
 #Correction files
 z='PE files'
 config.add_section(z)

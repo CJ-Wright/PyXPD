@@ -25,7 +25,7 @@ def __loadConfig():
 _conf=__loadConfig()
 
 
-def _initPV(_conf=_conf, section=None):
+def __initPV(_conf=_conf, section=None):
     confail={}
     conpass={}
     print 'Connecitng '+ section

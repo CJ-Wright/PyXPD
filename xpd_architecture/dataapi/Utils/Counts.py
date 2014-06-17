@@ -6,12 +6,12 @@ Use is subject to license terms and conditions.
 
 @author: Christopher J. Wright
 """
-from xpd_architecture.dataapi.config._conf import *
+from xpd_architecture.dataapi.config._conf import _conf, __initPV
 import cothread
 from cothread.catools import *
 
 
-confail, conpass=_initDet(section='Count PVs')
+confail, conpass=__initPV(section='Count PVs')
 
 def flux_counts(position=None):
     """

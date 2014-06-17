@@ -49,7 +49,7 @@ def SetFile(dirname=None,filename=None,
         internalfilename, ext= os.path.splitext(filename)
         NDFileName= internalfilename
         caput(__detectorD['FileName'], wave_conv_str(NDFileName))
-#TODO: do something about the file extension so it changes with the format change
+
     if dirname is not None and os.path.exists(dirname):
         NDFilePath=dirname
         caput(__detectorD['Path'], wave_conv_str(NDFilePath))
@@ -58,22 +58,24 @@ def SetFile(dirname=None,filename=None,
         NDAutoSave=1
 
     if file_format in __fileD['supFiles']:
+        file_format, ext=file_format.split(':')
         NDFileFormat= file_format
         caput(__detectorD['Format'], NDFileFormat)
+        end=ext
     else:
         caput(__detectorD['Format'], 'TIFF')
-
+        end='.tif'
     if increment is 'Auto':
         NDAutoIncrement= 1
         caput(__detectorD['AutoI'], NDAutoIncrement)
-        NDFileTemplate="%s%s%4.4d.tif"
+        NDFileTemplate="%s%s%4.4d"+end
 
     elif increment is 'Multi-Auto':
         NDFileNumber=0
         NDAutoIncrement=1
         caput(__detectorD['FileNum'], NDFileNumber)
         caput(__detectorD['AutoI'], NDAutoIncrement)
-        NDFileTemplate="%s%s%4.4d.tif"
+        NDFileTemplate="%s%s%4.4d"+end
 
     elif increment is not None:
         if type(increment) is not int:
@@ -81,9 +83,9 @@ def SetFile(dirname=None,filename=None,
         else:
             NDFileNumber=increment
             caput(__detectorD['FileNum'], NDFileNumber)
-            NDFileTemplate="%s%s%4.4d.tif"
+            NDFileTemplate="%s%s%4.4d"+end
     else:
-        NDFileTemplate="%s%s%.tif"
+        NDFileTemplate="%s%s%"+end
 
 
 def Acquire(state=None,subs=None,Time=None):
