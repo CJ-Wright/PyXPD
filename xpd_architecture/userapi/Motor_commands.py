@@ -14,6 +14,7 @@ from dataapi.config._conf import _conf
 
 """Motor Commands"""    
 def where(verbose=False):
+#TODO: where(MOTORNAME) return motor position
     """
     Returns:
         motor coordinates
