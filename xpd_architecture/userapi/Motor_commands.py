@@ -5,7 +5,7 @@ Use is subject to license terms and conditions.
 
 @author: Christopher J. Wright
 """
-
+#TODO:RELATIVE MOVE and MOVE in USERAPI
 from dataapi.motion.motors.status import *
 from dataapi.areaDetector.DetCore import *
 import cothread
@@ -52,7 +52,7 @@ def ascan(alias,start,finish,step,func,*args,**kwargs):
         array of motor positions and function outputs
     Example
     -------
-    ascan(printf, 5, step=.5, finish=105, start=99, alias='samx')
+    ascan('samx',-1, 1, .5,printf, 5)
     """
     
     x=None
