@@ -100,19 +100,20 @@ def Acquire(state=None,subs=None,Time=None):
     AcquireTime(Time)
     Exposures(subs)
     if state in ['Start','start', 1]:
-        caput(__detectorD['aq'], 1)
+        caput(__detectorD['Aq'], 1)
     elif state in ['Stop','stop', 0]:
-        caput(__detectorD['aq'], 0)
-    print caget(__detectorD['status'])
-    return caget(__detectorD['status'])
+        caput(__detectorD['Aq'], 0)
+    print caget(__detectorD['Status'])
+    return caget(__detectorD['Status'])
 
 
 def AcquireTime(Time=None):
+    print Time
     if Time!=None:
-        caput(__detectorD['acquiretime'],Time)
+        caput(__detectorD['AcquireTime'],Time)
     else:
-        print caget(__detectorD['acquiretimerbv'])
-        return caget(__detectorD['acquiretimerbv'])
+        print caget(__detectorD['AcquireTimeRBV'])
+        return caget(__detectorD['AcquireTimeRBV'])
 
 
 def NumImages(Number=None):
@@ -154,8 +155,8 @@ def Dark_Field(pathname=None,filename=None, file_format=None,
     SetFile(dirname=pathname,filename=filename+'.dark', file_format=file_format,
             metadata=metadata, increment=increment)
     
-    print 'Write dark file to:'
-    print caget(__detectorD['pv']+'FileTemplate_RBV')
+    # print 'Write dark file to:'
+    # print caget(__detectorD['File_Temp']+'_RBV')
     
     Shutter(0)
     Acquire('Start', subs=Dark_subframes, Time=Dark_exp_time)
@@ -180,6 +181,6 @@ def Shutter(state=None):
         Shutter()
 
 
-print SetFile(dirname='/home/xpdlabuser/Spyder_Projects/XPD+_architecture/test',filename='test1',
-            metadata=None, increment=None, save='Auto', file_format='TIFF')
-print wave_conv_str(caget(__detectorD['File_Temp']+'_RBV'))
+# print SetFile(dirname='/home/xpdlabuser/Spyder_Projects/XPD+_architecture/test',filename='test1',
+#             metadata=None, increment=None, save='Auto', file_format='TIFF')
+# print wave_conv_str(caget(__detectorD['File_Temp']+'_RBV'))

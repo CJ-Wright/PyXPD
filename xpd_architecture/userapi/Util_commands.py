@@ -7,11 +7,12 @@ __author__ = 'Christopher J. Wright'
 
 from xpd_architecture.dataapi.Utils.Gas_Valve import *
 from xpd_architecture.dataapi.Utils.Counts import *
+from xpd_architecture.dataapi.Utils.Temp_Control import *
 import cothread
 from cothread.catools import *
 from xpd_architecture.dataapi.config._conf import _conf
 import time
-
+from collections import OrderedDict
 
 def Gas(new_gas=None):
     """
@@ -40,3 +41,12 @@ def Gas(new_gas=None):
         return Gas()
     else:
         print '%s is not a recognised gas, please change gas configuration.' % (new_gas,)
+
+def TempProg(orderedD):
+    #Expecting entries to contain Start Temp, Stop Temp, Ramp Rate,and Time for move
+    for key in orderedD.keys():
+        if orderedD[key]['Ramp Rate'] is 0:
+            #keep temperature the same
+            pass
+        else:
+            temp_set(**orderedD[key])

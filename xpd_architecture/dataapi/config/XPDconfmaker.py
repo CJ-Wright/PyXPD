@@ -10,14 +10,14 @@ Use is subject to license terms and conditions.
 import ConfigParser
 import time
 
-#TODO: seperate beamline scientist from user configs
+
 config=ConfigParser.SafeConfigParser()
 config.optionxform=str
 
 z='Info'
 config.add_section(z)
-config.set(z, 'version', '0.0.2')
-config.set(z, 'Author', 'Chris Wright')
+config.set(z, 'version', '0.0.5')
+config.set(z, 'Author', 'Christopher J. Wright')
 config.set(z, 'date of creation',(time.strftime("%m/%d/%Y")))
 config.set(z,'comments', 'None yet')
 z='Motor PVs'
@@ -124,6 +124,17 @@ z='PE files'
 config.add_section(z)
 
 z='Single Default'
+config.add_section(z)
+
+z='Eurotherm'
+config.add_section(z)
+config.set(z, 'DefRamp', 10)
+config.set(z, 'Max%', 75)
+config.set(z, 'Port', '???')
+config.set(z, 'Address', '???')
+config.set(z, 'Resolution', '???')
+
+z='Cryostream'
 config.add_section(z)
 
 
