@@ -49,10 +49,30 @@ if _userconf.has_section('Temperature System'):
 
 def Temp_set(Start_Temp=None, Stop_Temp=None, Ramp=None, Time=None):
     """
-    Logical concerns:
+    Sets one section of an overall temperature scheme, starts the section and blocks until complete.
+
+    Parameters
+    ----------
+    Start_Temp: float
+        The starting temperature to use,
+            If this None use current temperature as starting temperature
+            If this is not the current temperature go to the current temperature before starting run
+    Stop_Temp: float
+        The final temperature
+    Ramp: float
+        Ramp rate for the segment in C/min
+            If this is None try to calculate ramp from stop and time
+            If the calculation fails use default ramp
+    Time: float
+        Time for segment
+            If this is none ramp until stop temperature is met
+
+
+    Logical concerns
+    ----------------
         Check that temperatures are in the instrument resolution
         Not all fields populated, which may be ok
-        Potential combos
+        Potential combos:
                   Start, Stop: go to the start temperature, then got to the stop at default ramp rate
             Start, Stop, Ramp: go to the start temperature, go to the stop taking as much time as the ramp demands
             Start, Stop, Time: go to the start temperature, go to the stop ramp determined by math
@@ -73,7 +93,7 @@ def Temp_set(Start_Temp=None, Stop_Temp=None, Ramp=None, Time=None):
 
     if Ramp is None:
         try:
-            internal_ramp=(Stop_Temp-Start_Temp)/(Time)
+            internal_ramp=(Stop_Temp-Start_Temp)/(Time/60)
         except:
             internal_ramp=deframp
 
@@ -85,33 +105,10 @@ def Temp_set(Start_Temp=None, Stop_Temp=None, Ramp=None, Time=None):
         while current_Temp() != Stop_Temp:
             print 'Heating/Cooling to %s C, currently at %s C' % (Stop_Temp, current_Temp(),)
             time.sleep(.1)
-
-
-
-
-
-
-
-
-
-
-
-
-
-    if Start_Temp is None:
-        Start_Temp=current_Temp()
-    internal_ramp=(Stop_Temp-Start_Temp)/(Time)
-    if Ramp is None:
-        Ramp=internal_ramp
-    if internal_ramp != Ramp:
-        print 'The set ramp rate does not match the internal ramp rate, using internal ramp rate'
-        Ramp=internal_ramp
-    if current_Temp() != Start_Temp:
-        print 'Not at starting temperature, moving to start temperature before program start'
-        Temp_set(current_Temp(), Start_Temp, Ramp=deframp)
-
-    #core
-    temp_ramp(Ramp)
-    set(Stop_Temp)
-    while current_Temp() != Stop_Temp:
-        sleep(.1)
+    else:
+        starttime=time.time()
+        temp_ramp(Ramp)
+        setT(Stop_Temp)
+        while time.time()<=starttime+Time:
+            print 'Heating/Cooling to %s C, currently at %s C' % (Stop_Temp, current_Temp(),)
+            time.sleep(.1)

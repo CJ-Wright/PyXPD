@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="26aa8b55-0cd0-4397-bc56-d31cdd75d2c0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Old_Cryo.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Temp_Control.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xpd_architecture/userapi/Userconfigmaker.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xpd_architecture/userapi/_userconf.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xpd_architecture/dataapi/areaDetector/DetCore.py" afterPath="$PROJECT_DIR$/xpd_architecture/dataapi/areaDetector/DetCore.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Temp_Control.py" afterPath="$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Temp_Control.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xpd_architecture/userapi/Util_commands.py" afterPath="$PROJECT_DIR$/xpd_architecture/userapi/Util_commands.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xpd_architecture/dataapi/config/XPDconfmaker.py" afterPath="$PROJECT_DIR$/xpd_architecture/dataapi/config/XPDconfmaker.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="XPD+_architecture.iws" />
@@ -42,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Util_commands.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Util_commands.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/xpd_architecture/userapi/Util_commands.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="302" max-vertical-offset="855">
-              <caret line="47" column="30" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.53887886" vertical-offset="242" max-vertical-offset="840">
+              <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
               <folding>
                 <element signature="e#197#251#0" expanded="true" />
               </folding>
@@ -54,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Temp_Control.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Temp_Control.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Temp_Control.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8951175" vertical-offset="510" max-vertical-offset="1845">
-              <caret line="67" column="101" selection-start-line="67" selection-start-column="101" selection-end-line="67" selection-end-column="101" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1187" max-vertical-offset="1785">
+              <caret line="113" column="26" selection-start-line="113" selection-start-column="26" selection-end-line="113" selection-end-column="26" />
               <folding>
                 <element signature="e#197#248#0" expanded="true" />
               </folding>
@@ -70,7 +65,7 @@
         <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/config/XPDconfmaker.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="1652" max-vertical-offset="2205">
-              <caret line="128" column="12" selection-start-line="128" selection-start-column="3" selection-end-line="128" selection-end-column="12" />
+              <caret line="133" column="22" selection-start-line="133" selection-start-column="22" selection-end-line="133" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -79,8 +74,8 @@
       <file leaf-file-name="Userconfigmaker.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xpd_architecture/userapi/Userconfigmaker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660">
-              <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="660">
+              <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -90,7 +85,7 @@
         <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Old_Cryo.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2565">
-              <caret line="165" column="21" selection-start-line="165" selection-start-column="21" selection-end-line="165" selection-end-column="21" />
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding>
                 <element signature="e#197#210#0" expanded="true" />
               </folding>
@@ -131,12 +126,12 @@
         <option value="$PROJECT_DIR$/xpd_architecture/dataapi/config/_conf.py" />
         <option value="$PROJECT_DIR$/xpd_architecture/dataapi/areaDetector/DetCore.py" />
         <option value="$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Old_Cryo.py" />
-        <option value="$PROJECT_DIR$/xpd_architecture/userapi/Util_commands.py" />
         <option value="$PROJECT_DIR$/xpd_architecture/dataapi/config/Userconfigmaker.py" />
         <option value="$PROJECT_DIR$/xpd_architecture/userapi/_userconf.py" />
         <option value="$PROJECT_DIR$/xpd_architecture/userapi/Userconfigmaker.py" />
         <option value="$PROJECT_DIR$/xpd_architecture/dataapi/config/XPDconfmaker.py" />
         <option value="$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Temp_Control.py" />
+        <option value="$PROJECT_DIR$/xpd_architecture/userapi/Util_commands.py" />
       </list>
     </option>
   </component>
@@ -640,7 +635,11 @@
       <created>1403031670050</created>
       <updated>1403031670050</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added low level Eurotherm control">
+      <created>1403110755134</created>
+      <updated>1403110755134</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -714,7 +713,8 @@
     <MESSAGE value="Multiple Valve support and switched over to __initPV startup script" />
     <MESSAGE value="Fixed error in wave_conv_str" />
     <MESSAGE value="New wave-&gt;str conversion" />
-    <option name="LAST_COMMIT_MESSAGE" value="New wave-&gt;str conversion" />
+    <MESSAGE value="Added low level Eurotherm control" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added low level Eurotherm control" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1068,39 +1068,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Old_Cryo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2565">
-          <caret line="165" column="21" selection-start-line="165" selection-start-column="21" selection-end-line="165" selection-end-column="21" />
-          <folding>
-            <element signature="e#197#210#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/xpd_architecture/userapi/_userconf.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5424955" vertical-offset="0" max-vertical-offset="553">
           <caret line="20" column="68" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xpd_architecture/userapi/Userconfigmaker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660">
-          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xpd_architecture/userapi/Util_commands.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="302" max-vertical-offset="855">
-          <caret line="47" column="30" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
-          <folding>
-            <element signature="e#197#251#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1112,20 +1084,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Old_Cryo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2565">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <element signature="e#197#210#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/config/XPDconfmaker.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1652" max-vertical-offset="2205">
-          <caret line="128" column="12" selection-start-line="128" selection-start-column="3" selection-end-line="128" selection-end-column="12" />
+          <caret line="133" column="22" selection-start-line="133" selection-start-column="22" selection-end-line="133" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xpd_architecture/userapi/Userconfigmaker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="660">
+          <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/xpd_architecture/dataapi/Utils/Temp_Control.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8951175" vertical-offset="510" max-vertical-offset="1845">
-          <caret line="67" column="101" selection-start-line="67" selection-start-column="101" selection-end-line="67" selection-end-column="101" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1187" max-vertical-offset="1785">
+          <caret line="113" column="26" selection-start-line="113" selection-start-column="26" selection-end-line="113" selection-end-column="26" />
           <folding>
             <element signature="e#197#248#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xpd_architecture/userapi/Util_commands.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.53887886" vertical-offset="242" max-vertical-offset="840">
+          <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+          <folding>
+            <element signature="e#197#251#0" expanded="true" />
           </folding>
         </state>
       </provider>

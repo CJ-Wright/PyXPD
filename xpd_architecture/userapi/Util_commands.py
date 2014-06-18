@@ -43,10 +43,9 @@ def Gas(new_gas=None):
         print '%s is not a recognised gas, please change gas configuration.' % (new_gas,)
 
 def TempProg(orderedD):
-    #Expecting entries to contain Start Temp, Stop Temp, Ramp Rate,and Time for move
+    """
+
+    """
+    #Expecting entries to contain Start Temp, Stop Temp, Ramp Rate,and Time for each segment
     for key in orderedD.keys():
-        if orderedD[key]['Ramp Rate'] is 0:
-            #keep temperature the same
-            pass
-        else:
-            temp_set(**orderedD[key])
+        Temp_set(**orderedD[key])
