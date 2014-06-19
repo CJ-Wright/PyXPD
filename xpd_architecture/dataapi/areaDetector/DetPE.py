@@ -16,7 +16,7 @@ import os
 
 confail, conpass=__initPV(section='PE PVs')
 
-#TODO: make file initiator
+#TODO: make file initiator for detector corrections
 
 print 'Finding offset/gain/bad pixel correction files'
 try:

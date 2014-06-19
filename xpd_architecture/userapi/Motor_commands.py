@@ -5,27 +5,30 @@ Use is subject to license terms and conditions.
 
 @author: Christopher J. Wright
 """
-#TODO:RELATIVE MOVE and MOVE in USERAPI
-from dataapi.motion.motors.status import *
-from dataapi.areaDetector.DetCore import *
+from xpd_architecture.dataapi.motion.motors.status import *
+from xpd_architecture.dataapi.areaDetector.DetCore import *
 import cothread
 from cothread.catools import *
-from dataapi.config._conf import _conf
+from xpd_architecture.dataapi.config._conf import _conf
 
-"""Motor Commands"""    
-def where(verbose=False):
-#TODO: where(MOTORNAME) return motor position
+"""Motor Commands"""
+def where(motor=None):
     """
     Returns:
         motor coordinates
     """
-    if verbose==True:
+    if motor=='all':
         print motorD
+    if motor in motorD.keys():
+        posd=dict()
+        posd[motor]=caget(_conf.get('Motor PVs',option))
+        print posd
     else:
         posd=dict()
-        for option in _conf.options('PVs'):
-            if 'motor' in str(_conf.get('PVs',option)):
-                posd[str(option)]=caget(_conf.get('PVs',option))
+        for option in _conf.options('Motor PVs'):
+            if 'motor' in str(_conf.get('Motor PVs',option)):
+                posd[str(option)]=caget(_conf.get('Motor PVs',option))
+                print posd
         return posd
 
 def ascan(alias,start,finish,step,func,*args,**kwargs):

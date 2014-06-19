@@ -33,6 +33,10 @@ def move(alias,value,wait=False, printop=False):
     else:
         raise Exception('Out of Bounds, the soft limit has been reached')
     
+def rmove(alias,value,wait=False, printop=False):
+    absvalue=value+position(alias)
+    move(alias,absvalue,wait=False, printop=False)
+
 
 def position(alias, **kwargs):
     if kwargs=={}:
@@ -50,21 +54,26 @@ def resolution(**kwargs):
             print motorD[key]['res']
 
 
-def multi_move(aliases=None, positions=None):
-    assert len(aliases)==len(positions)
+def multi_move(movedict):
     multiD={}
-    for number in enumerate(aliases):
-        motor = motorD[aliases[number]]
-        if motor['low']<= positions[number] <=motor['high']:
-            if abs(Decimal(positions[number]).remainder_near(Decimal(motor['res'])))<1e-10:
-                motorD[motor['pv']]=positions[number]
+    for key, value in movedict.items():
+        motor = motorD[key]
+        if motor['low']<= value <=motor['high']:
+            if abs(Decimal(value).remainder_near(Decimal(motor['res'])))<1e-10:
+                multiD[motor['pv']]=value
             else:
                 raise Exception('Move specified with more precision than instrument allows')
         else:
             raise Exception('Out of Bounds, the soft limit has been reached')
 
-    for key, value in multiD:
+    for key, value in multiD.items():
+        # print 'HI'
         caput(key, value, wait=False)
-#TODO: Figure out appropriate while loop for checking if all motor moves are finished
-    while True:
-        pass
+    # print 'Stuff'
+    finished=0
+    while finished==0:
+        # print finished
+        finished = 1
+        for key in multiD.keys():
+            # print caget(key+'.DMOV')
+            finished *= caget(key+'.DMOV')
