@@ -46,13 +46,6 @@ config.set(z, 'Valve_2', 'Valve_1:5')
 config.set(z, 'HF', 'Valve_2:2')
 #ETC
 
-z='Example User Gas Assignments'
-config.add_section(z)
-config.set(z, 'F2', 'Valve_1:0')
-config.set(z, 'FOOF', 'Valve_1:2')
-config.set(z, 'SUPER AWESOME GAS', 'Valve_2:2')
-
-
 #DETECTOR PVS
 d='13SIM1:'
 z='Detector PVs'
@@ -136,6 +129,12 @@ config.set(z, 'Resolution', '???')
 
 z='Cryostream'
 config.add_section(z)
+
+z='Flow Meter PVs'
+config.add_section(z)
+config.set(z, 'Flow_1', 'PV???')
+config.set(z, 'Flow_2', 'PV???')
+config.set(z, 'Flow_3', 'PV???')
 
 
 with open('XPD.conf', 'wb') as configfile:

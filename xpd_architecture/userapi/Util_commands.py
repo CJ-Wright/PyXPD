@@ -8,6 +8,7 @@ __author__ = 'Christopher J. Wright'
 from xpd_architecture.dataapi.Utils.Gas_Valve import *
 from xpd_architecture.dataapi.Utils.Counts import *
 from xpd_architecture.dataapi.Utils.Temp_Control import *
+from xpd_architecture.dataapi.Utils.Flow_Control import *
 import cothread
 from cothread.catools import *
 from xpd_architecture.dataapi.config._conf import _conf
@@ -42,10 +43,61 @@ def Gas(new_gas=None):
     else:
         print '%s is not a recognised gas, please change gas configuration.' % (new_gas,)
 
-def TempProg(orderedD):
-    """
 
+def TempProg(orderedD=None):
+    """
+    Sets and starts the temperature program
+    Parameters
+    ----------
+    orderedD: ordered dictionary
+        This dictionary contains the segements of the program in order.  Each sub-directory is a new segment
+        i.e. {0:{Start:25, Stop:75, Time: 20},1:{Start:75, Stop:350, Ramp: 35}}
+    Subparameters
+    -------------
+    Start: float, optional
+        Starting temperature of segment
+    Stop: float
+        Ending temperature of segment
+    Ramp: float, optional
+        the rate of temperature change
+    Time: float, optional
+        Duration of program segment
     """
     #Expecting entries to contain Start Temp, Stop Temp, Ramp Rate,and Time for each segment
     for key in orderedD.keys():
         Temp_set(**orderedD[key])
+
+def Mix(dictionary=None, total_flow=None, equilibrate=False):
+    """
+
+    """
+    if total_flow is not None:
+        total=0
+        for key in dictionary.keys():
+            Gas(key)
+            Flow(key, dictionary[key])
+            total+=dictionary[key]
+    else:
+        for key in dictionary.keys():
+            Gas(key)
+            Flow(key, dictionary[key]*total_flow)
+        total=total_flow
+    if equilibrate==True:
+        for i in range(0,15):
+            if Flow('EX')==total:
+                break
+            else:
+                print "Pressure not equalized, waiting 3 seconds"
+                time.sleep(3)
+                i+=1
+
+
+def Flow(Gas_Name=None, Value=None):
+    if Gas_Name is None:
+        for option in _conf.options('Flow Meter PVs'):
+            print 'Flow at Meter %s is %s' % (option, get_flow(option), )
+    elif Value is None:
+        print 'Flow for %s is %s' % (Gas_Name, get_flow(flowname_from_gas(Gas_Name))) # need to get flow from gas name
+    else:
+        #Find flow meter associated with Gas
+        set_flow(flowname_from_gas(Gas_Name),Value)

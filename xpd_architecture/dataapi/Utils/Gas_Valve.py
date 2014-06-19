@@ -37,6 +37,11 @@ def loadGasConfig(configuration=None,config=None):
 valve_asg=loadGasConfig()
 
 
+def flowname_from_gas(GasName):
+    valvename=valve_asg[Gas_Name].split(':')[0]
+    valvenumber=valvename.split('_')[1]
+    return 'Flow_'+str(valvenumber)
+
 def gas_position(Valve=None, Pos=None):
     """
 
