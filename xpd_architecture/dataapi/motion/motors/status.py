@@ -20,7 +20,7 @@ for option in _conf.options('Motor PVs'):
 def trans(alias):
     return _conf.get('Motor PVs',alias)
     
-def move(alias,value,wait=False, printop=False):
+def move(alias=None,value=None,wait=False, printop=False):
     #check final position within limits
     motor=motorD[alias]
 #    print motorD
@@ -33,12 +33,12 @@ def move(alias,value,wait=False, printop=False):
     else:
         raise Exception('Out of Bounds, the soft limit has been reached')
     
-def rmove(alias,value,wait=False, printop=False):
+def rmove(alias=None,value=None,wait=False, printop=False):
     absvalue=value+position(alias)
     move(alias,absvalue,wait=False, printop=False)
 
 
-def position(alias, **kwargs):
+def position(alias=None, **kwargs):
     if kwargs=={}:
         motor=motorD[alias]
         pos=caget(motor['pv']+'.DRBV') 
@@ -54,7 +54,7 @@ def resolution(**kwargs):
             print motorD[key]['res']
 
 
-def multi_move(movedict):
+def multi_move(movedict=None):
     multiD={}
     for key, value in movedict.items():
         motor = motorD[key]

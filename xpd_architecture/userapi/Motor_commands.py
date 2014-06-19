@@ -189,6 +189,7 @@ def mesh(ax1,ax2,func,*args,**kwargs):
 #    kwargs['ax2']=ax2
     if kwargs.has_key('serpentmove')==False:
         kwargs['serpentmove']=True
+#TODO: Compress these if functions down to a single if and else
     if ax1['movetype']=='REL':
         ax1graphax=np.arange(float(position(ax1['alias']))+ax1['start'],float(position(ax1['alias']))+ax1['finish']+ax1['step'], ax1['step'])
     if ax2['movetype']=='REL':
