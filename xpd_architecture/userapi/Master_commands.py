@@ -10,13 +10,22 @@ from xpd_architecture.userapi import *
 import cothread
 from cothread.catools import *
 from xpd_architecture.dataapi.config._conf import _conf, __initPV
-
+import inspect
 
 def printf(value):
 #    print value, test function
     return value
 
+
+def helper(func, options='args'):
+    answer=inspect.getargspec(func)
+    if options=='args':
+        print answer[0]
+    elif options=='default':
+        print answer[-1]
+    else:
+        print func.__doc__
+
+
 if __name__ == "__main__":
-    __initPV(_conf)
-#    print('Initial positions:')
-#    print(where())
+    print 'Welcome to the pyXPD control system'

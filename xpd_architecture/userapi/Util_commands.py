@@ -69,19 +69,32 @@ def TempProg(orderedD=None):
 
 def Mix(dictionary=None, total_flow=None, equilibrate=False):
     """
+    Mixes gases together for use in flow cell
 
+    Parameters
+    ----------
+    dictionary: dictionary
+        This contains the information of about the gases ie. dictionary={H2:5,O2:10}
+        The values are either in flow units or in percent if total_flow is used
+    total_flow: float
+        If total_flow is used the values in the dictionary are interpreted as percents of the total flow
+    equilibrate: bool
+        If equilibrate is true the program will wait a max of 45 seconds for the input gas flow to equal the exhaust flow
     """
-    if total_flow is not None:
+    #absolute flow control
+    if total_flow is None:
         total=0
         for key in dictionary.keys():
             Gas(key)
             Flow(key, dictionary[key])
             total+=dictionary[key]
+    #relative flow control
     else:
         for key in dictionary.keys():
             Gas(key)
             Flow(key, dictionary[key]*total_flow)
         total=total_flow
+    #wait for equilibration
     if equilibrate==True:
         for i in range(0,15):
             if Flow('EX')==total:

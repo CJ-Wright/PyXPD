@@ -11,10 +11,9 @@ getcontext().prec=8
 confail, conpass=__initPV(section='Motor PVs')
 
 motorD=dict()
-for option in _conf.options('Motor PVs'):
-    if 'motor' in str(_conf.get('Motor PVs',option)):
-        pv=_conf.get('Motor PVs',option)
-        motorD[option]={'pv':pv,'low':caget(pv+'.LLM'),'high':caget(pv+'.HLM'),'EGU':caget(pv+'.EGU'),'res':caget(pv+'.MRES')}
+for option in conpass:
+    pv=_conf.get('Motor PVs',option)
+    motorD[option]={'pv':pv,'low':caget(pv+'.LLM'),'high':caget(pv+'.HLM'),'EGU':caget(pv+'.EGU'),'res':caget(pv+'.MRES')}
 
 
 def trans(alias):
