@@ -13,7 +13,7 @@ Less general aspects are dealt with in the detector specific modules
 """
 import cothread
 from cothread.catools import *
-from xpd_architecture.dataapi.config._conf import _conf, __initPV
+from pyXPD.instrumentapi.config._conf import _conf, __initPV
 import numpy as np
 import os
 

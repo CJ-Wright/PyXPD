@@ -1,5 +1,5 @@
 __author__ = 'arkilic'
-from xpd_architecture.dataapi.reciprocal_space_calculator.define_reciprocal_space import *
+from pyXPD.instrumentapi.reciprocal_space_calculator.define_reciprocal_space import *
 
 
 def init(geometry_name):

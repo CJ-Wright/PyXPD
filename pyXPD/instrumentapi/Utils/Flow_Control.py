@@ -5,10 +5,10 @@ Use is subject to license terms and conditions.
 @author: Christopher J. Wright'''
 __author__ = 'Christopher J. Wright'
 
-from xpd_architecture.dataapi.config._conf import *
+from pyXPD.instrumentapi.config._conf import _conf, __initPV
 from cothread.catools import *
 
-confail, conpass= __initPV(_conf, 'Flow Meters')
+confail, conpass= __initPV(_conf, 'Flow Meter PVs')
 
 def set_flow(flowmeter=None, value=None):
     caput(_conf.get('Flow Meter PVs', flowmeter),value)

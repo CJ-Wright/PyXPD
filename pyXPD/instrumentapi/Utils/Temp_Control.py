@@ -5,10 +5,10 @@ Use is subject to license terms and conditions.
 @author: Christopher J. Wright'''
 __author__ = 'Christopher J. Wright'
 
-from xpd_architecture.dataapi.config._conf import *
-from xpd_architecture.userapi._userconf import *
+from pyXPD.instrumentapi.config._conf import *
+from pyXPD.userapi._userconf import _userconf
 import time
-import Decimal
+from decimal import *
 
 
 if _userconf.has_section('Temperature System'):

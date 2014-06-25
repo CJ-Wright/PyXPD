@@ -18,7 +18,7 @@ def __loadConfig():
         # '/etc/user.conf',
         os.path.expanduser('~/user.conf'),
         'user.conf',
-        '/home/xpdlabuser/Spyder_Projects/XPD+_architecture/xpd_architecture/dataapi/config/XPD.conf'
+        '/home/xpdlabuser/Spyder_Projects/XPD+_architecture/pyXPD/instrumentapi/config/XPD.conf'
     ])
     return cf
     

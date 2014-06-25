@@ -21,12 +21,12 @@ Design Notes:
             Filename to use or acquire new
             
 """
-from xpd_architecture.dataapi.motion.motors.status import *
-from xpd_architecture.dataapi.areaDetector.DetCore import *
-from xpd_architecture.dataapi.areaDetector.DetPE import *
+from pyXPD.instrumentapi.motion.motors.status import *
+from pyXPD.instrumentapi.areaDetector.DetCore import *
+from pyXPD.instrumentapi.areaDetector.DetPE import *
 import cothread
 from cothread.catools import *
-from xpd_architecture.dataapi.config._conf import _conf
+from pyXPD.instrumentapi.config._conf import _conf
 import time
 
 

@@ -121,8 +121,8 @@ config.add_section(z)
 
 z='Eurotherm'
 config.add_section(z)
-config.set(z, 'DefRamp', 10)
-config.set(z, 'Max%', 75)
+config.set(z, 'DefRamp', '10')
+config.set(z, 'Max%', '75')
 config.set(z, 'Port', '???')
 config.set(z, 'Address', '???')
 config.set(z, 'Resolution', '???')

@@ -5,11 +5,11 @@ Use is subject to license terms and conditions.
 
 @author: Christopher J. Wright
 """
-from xpd_architecture.dataapi.motion.motors.status import *
-from xpd_architecture.dataapi.areaDetector.DetCore import *
+from pyXPD.instrumentapi.motion.motors.status import *
+from pyXPD.instrumentapi.areaDetector.DetCore import *
 import cothread
 from cothread.catools import *
-from xpd_architecture.dataapi.config._conf import _conf
+from pyXPD.instrumentapi.config._conf import _conf
 
 """Motor Commands"""
 def where(motor=None):

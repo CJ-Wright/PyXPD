@@ -5,13 +5,13 @@ Use is subject to license terms and conditions.
 @author: Christopher J. Wright'''
 __author__ = 'Christopher J. Wright'
 
-from xpd_architecture.dataapi.Utils.Gas_Valve import *
-from xpd_architecture.dataapi.Utils.Counts import *
-from xpd_architecture.dataapi.Utils.Temp_Control import *
-from xpd_architecture.dataapi.Utils.Flow_Control import *
+from pyXPD.instrumentapi.Utils.Gas_Valve import *
+from pyXPD.instrumentapi.Utils.Counts import *
+from pyXPD.instrumentapi.Utils.Temp_Control import *
+from pyXPD.instrumentapi.Utils.Flow_Control import *
 import cothread
 from cothread.catools import *
-from xpd_architecture.dataapi.config._conf import _conf
+from pyXPD.instrumentapi.config._conf import _conf
 import time
 from collections import OrderedDict
 
