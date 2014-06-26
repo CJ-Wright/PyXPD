@@ -28,7 +28,6 @@ config.set(z, 'samy', 'test:motorx2')
 
 z = 'Count PVs'
 config.add_section(z)
-
 config.set(z, 'PhotoD', 'test:sensor1')
 
 z = 'Gas Valve PVs'

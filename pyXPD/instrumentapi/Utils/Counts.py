@@ -11,25 +11,38 @@ import cothread
 from cothread.catools import *
 
 
-confail, conpass=__initPV(section='Count PVs')
+pv_fail, pv_pass = __initPV(section='Count PVs')
 
 def flux_counts(position=None):
     """
     This function returns the counts from the various flux detectors, including the photodiode.
-    :param position: Name of position of flux detector
-    :type position:str
-    :return: countD: Dictionary of positions and their counts
-    :rtype: dict
-    :return x: the counts at the specified position
-    :rtype x: float
+
+    Parameters
+    ----------
+    position: str
+        Name of position of flux detector
+    Return
+    -----
+    countD: dict
+    Dictionary of positions and their counts
+    x: float
+    The counts at the specified position
+
+    >>> flux_counts('PhotoD')
+    0.0
+    0.0
+
+    >>> flux_counts()
+    PhotoD: 0.0
+    {'PhotoD': 0.0}
     """
     if position is None:
         countD=dict()
-        for option in _conf.options('Count PVs'):
-            countD[option]=caget(_conf.get('Count PVs', option))
-            print option+': '+str(countD[option])
+        for pv in pv_pass:
+            countD[pv]=caget(pv_pass[pv])
+            print pv+': '+str(countD[pv])
         return countD
     else:
-        x=caget(_conf.get('Count PVs', position))
+        x=caget(pv_pass[position])
         print x
         return x
