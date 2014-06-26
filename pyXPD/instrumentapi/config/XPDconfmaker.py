@@ -5,6 +5,8 @@ Copyright (c) 2014 Brookhaven National Laboratory All rights reserved.
 Use is subject to license terms and conditions.
 
 @author: Christopher J. Wright
+
+This module makes the beamline configuration files, not for general users.
 """
 
 import ConfigParser

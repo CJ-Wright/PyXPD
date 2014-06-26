@@ -5,13 +5,16 @@ Copyright (c) 2014 Brookhaven National Laboratory All rights reserved.
 Use is subject to license terms and conditions.
 
 @author: Christopher J. Wright
+
+This module handles the counts from point detectors like photodiodes
 """
-from pyXPD.instrumentapi.config._conf import _conf, __initPV
-import cothread
 from cothread.catools import *
+
+from pyXPD.instrumentapi.config._conf import __initPV
 
 
 pv_fail, pv_pass = __initPV(section='Count PVs')
+
 
 def flux_counts(position=None):
     """
@@ -37,12 +40,12 @@ def flux_counts(position=None):
     {'PhotoD': 0.0}
     """
     if position is None:
-        countD=dict()
+        countD = dict()
         for pv in pv_pass:
-            countD[pv]=caget(pv_pass[pv])
-            print pv+': '+str(countD[pv])
+            countD[pv] = caget(pv_pass[pv])
+            print pv + ': ' + str(countD[pv])
         return countD
     else:
-        x=caget(pv_pass[position])
+        x = caget(pv_pass[position])
         print x
         return x
