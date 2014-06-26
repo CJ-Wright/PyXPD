@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26aa8b55-0cd0-4397-bc56-d31cdd75d2c0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pyXPD/instrumentapi/Utils/Counts.py" afterPath="$PROJECT_DIR$/pyXPD/instrumentapi/Utils/Counts.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pyXPD/instrumentapi/config/XPDconfmaker.py" afterPath="$PROJECT_DIR$/pyXPD/instrumentapi/config/XPDconfmaker.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pyXPD/instrumentapi/config/__init__.py" afterPath="$PROJECT_DIR$/pyXPD/instrumentapi/config/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/xpdlabuser.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pyXPD/instrumentapi/config/_conf.py" afterPath="$PROJECT_DIR$/pyXPD/instrumentapi/config/_conf.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="XPD+_architecture.iws" />
@@ -31,23 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Counts.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/Utils/Counts.py">
+      <file leaf-file-name="_conf.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/config/_conf.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.14117648" vertical-offset="0" max-vertical-offset="850">
-              <caret line="8" column="68" selection-start-line="8" selection-start-column="68" selection-end-line="8" selection-end-column="68" />
-              <folding>
-                <element signature="e#465#906#1" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="XPDconfmaker.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/config/XPDconfmaker.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1340" max-vertical-offset="2190">
-              <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.89411765" vertical-offset="155" max-vertical-offset="1005">
+              <caret line="61" column="27" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -104,6 +91,7 @@
         <option value="$PROJECT_DIR$/pyXPD/instrumentapi/config/__init__.py" />
         <option value="$PROJECT_DIR$/pyXPD/instrumentapi/config/XPDconfmaker.py" />
         <option value="$PROJECT_DIR$/pyXPD/instrumentapi/Utils/Counts.py" />
+        <option value="$PROJECT_DIR$/pyXPD/instrumentapi/config/_conf.py" />
       </list>
     </option>
   </component>
@@ -682,7 +670,11 @@
       <created>1403825477818</created>
       <updated>1403825477818</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Counts.flux_counts documentation">
+      <created>1403826292122</created>
+      <updated>1403826292122</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1098,14 +1090,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/config/_conf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="780">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/Utils/Flow_Control.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
@@ -1187,21 +1171,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/Utils/Counts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42352942" vertical-offset="0" max-vertical-offset="850">
+          <caret line="47" column="9" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
+          <folding>
+            <element signature="e#465#906#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/config/XPDconfmaker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1340" max-vertical-offset="2190">
+        <state vertical-scroll-proportion="0.3647059" vertical-offset="1340" max-vertical-offset="2190">
           <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/Utils/Counts.py">
+    <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/config/_conf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14117648" vertical-offset="0" max-vertical-offset="850">
-          <caret line="8" column="68" selection-start-line="8" selection-start-column="68" selection-end-line="8" selection-end-column="68" />
-          <folding>
-            <element signature="e#465#906#1" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.89411765" vertical-offset="155" max-vertical-offset="1005">
+          <caret line="61" column="27" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>

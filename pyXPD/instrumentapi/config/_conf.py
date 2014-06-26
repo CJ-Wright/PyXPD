@@ -5,11 +5,16 @@ Copyright (c) 2014 Brookhaven National Laboratory All rights reserved.
 Use is subject to license terms and conditions.
 
 @author: Christopher J. Wright
+
+This module loads the beamline configuration file so it can be accessed by other modules
 """
 
 from cothread.catools import *
 
 def __loadConfig():
+    """
+    Load the configuration file, looking a few possible sources for XPD.conf
+    """
     import os.path
     import ConfigParser
     cf=ConfigParser.SafeConfigParser()
@@ -26,22 +31,32 @@ _conf=__loadConfig()
 
 
 def __initPV(_conf=_conf, section=None):
-    confail={}
-    conpass={}
+    """
+    Load the PVs and check their connections, this is used in other modules as the first step
+
+    Parameters
+    ----------
+    _conf: configParser instance
+        This is the configuration file which holds all the PVs to be tested
+    section: str
+        Name of the section in the configuration file
+
+    Returns
+    -------
+    pv_fail, pv_pass: dict
+        Dictionaries of the PVs that failed and passed the connection test, respectively
+    """
+    pv_fail={}
+    pv_pass={}
     print 'Connecitng '+ section
     for option in _conf.options(section):
         try:
             connect(_conf.get(section, option), timeout=1)
             print 'PV passed:', option
-            conpass[option]=_conf.get(section, option)
+            pv_pass[option]=_conf.get(section, option)
         except:
             print 'PV failed:', option
-            confail[option]=_conf.get(section ,option)
+            pv_fail[option]=_conf.get(section ,option)
             pass
-#            raise Exception('Some of the detectors were not found or could not connect, \
-#            namely:\n %s, pv=%s'% (option,_conf.get('Detector PVs',option)))
-#    print 'failed: \n', confail
-#    print '\n\n'
-#    print 'passed: \n', conpass
     print section+' connection complete'
-    return confail, conpass
+    return pv_fail, pv_pass
