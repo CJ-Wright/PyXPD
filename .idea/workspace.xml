@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26aa8b55-0cd0-4397-bc56-d31cdd75d2c0" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pyXPD/userapi/Motor_commands.py" afterPath="$PROJECT_DIR$/pyXPD/userapi/Motor_commands.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pyXPD/instrumentapi/motion/motors/status.py" afterPath="$PROJECT_DIR$/pyXPD/instrumentapi/motion/motors/status.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -32,10 +33,12 @@
       <file leaf-file-name="status.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/motion/motors/status.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.63380283" vertical-offset="0" max-vertical-offset="1320">
-              <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.24470589" vertical-offset="422" max-vertical-offset="2475">
+              <caret line="42" column="19" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
               <folding>
                 <element signature="e#38#68#0" expanded="true" />
+                <element signature="e#2696#4013#0" expanded="false" />
+                <element signature="e#4046#4831#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -87,6 +90,7 @@
         <option value="$PROJECT_DIR$/xpd_architecture/instrumentapi/config/XPDconfmaker.py" />
         <option value="$PROJECT_DIR$/xpd_architecture/userapi/MED/Main.py" />
         <option value="$PROJECT_DIR$/pyXPD/userapi/MED/Main.py" />
+        <option value="$PROJECT_DIR$/pyXPD/userapi/Motor_commands.py" />
         <option value="$PROJECT_DIR$/pyXPD/instrumentapi/motion/motors/status.py" />
       </list>
     </option>
@@ -209,6 +213,98 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="reciprocal_space_calculator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XPD+_architecture" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XPD+_architecture" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pyXPD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="instrumentapi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="motion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XPD+_architecture" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XPD+_architecture" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pyXPD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="instrumentapi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="motion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="motors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XPD+_architecture" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XPD+_architecture" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pyXPD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="instrumentapi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XPD+_architecture" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XPD+_architecture" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pyXPD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="instrumentapi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="areaDetector" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -268,96 +364,109 @@
       <recent name="$PROJECT_DIR$/dataapi" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Main (1)">
-    <configuration default="false" name="status" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python tests.Doctest multi_move">
+    <configuration default="false" name="Doctest resolution" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
+      <envs />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/xpd_architecture/dataapi/motion/motors" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pyXPD/instrumentapi/motion/motors" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="XPD+_architecture" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xpd_architecture/dataapi/motion/motors/status.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyXPD/instrumentapi/motion/motors/status.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="resolution" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_FUNCTION" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Master_commands" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Doctest rmove" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
+      <envs />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/xpd_architecture/userapi" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pyXPD/instrumentapi/motion/motors" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="XPD+_architecture" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xpd_architecture/userapi/Master_commands.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyXPD/instrumentapi/motion/motors/status.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="rmove" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_FUNCTION" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Doctest move" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
+      <envs />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/xpd_architecture/userapi/MED" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pyXPD/instrumentapi/motion/motors" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="XPD+_architecture" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xpd_architecture/userapi/MED/Main.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyXPD/instrumentapi/motion/motors/status.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="move" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_FUNCTION" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="XPDconfmaker" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Doctest position" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
+      <envs />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/xpd_architecture/instrumentapi/config" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pyXPD/instrumentapi/motion/motors" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="XPD+_architecture" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xpd_architecture/instrumentapi/config/XPDconfmaker.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyXPD/instrumentapi/motion/motors/status.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="position" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_FUNCTION" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Doctest multi_move" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
+      <envs />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pyXPD/userapi/MED" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pyXPD/instrumentapi/motion/motors" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="XPD+_architecture" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyXPD/userapi/MED/Main.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PyDebugRunner" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyXPD/instrumentapi/motion/motors/status.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="multi_move" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_FUNCTION" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -483,19 +592,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.status" />
-      <item index="1" class="java.lang.String" itemvalue="Python.Master_commands" />
-      <item index="2" class="java.lang.String" itemvalue="Python.Main" />
-      <item index="3" class="java.lang.String" itemvalue="Python.XPDconfmaker" />
-      <item index="4" class="java.lang.String" itemvalue="Python.Main (1)" />
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Doctest resolution" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Doctest rmove" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Doctest move" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Doctest position" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Doctest multi_move" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Main (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Main" />
-        <item index="2" class="java.lang.String" itemvalue="Python.XPDconfmaker" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Master_commands" />
-        <item index="4" class="java.lang.String" itemvalue="Python.status" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Doctest multi_move" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Doctest position" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Doctest move" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Doctest rmove" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Doctest resolution" />
       </list>
     </recent_temporary>
   </component>
@@ -577,7 +686,11 @@
       <created>1403815277450</created>
       <updated>1403815277450</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Removed Translate function">
+      <created>1403815322268</created>
+      <updated>1403815322268</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -604,19 +717,19 @@
     <frame x="0" y="27" width="1400" height="1021" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299435" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299435" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299435" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.3295583" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="1400" y="759" width="1373" height="291" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3378531" sideWeight="0.5003642" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299435" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299435" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2541879" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21194464" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33736265" sideWeight="0.49963585" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3997735" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33635333" sideWeight="0.49963585" order="2" side_tool="false" content_ui="tabs" x="1418" y="753" width="1373" height="297" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.3997735" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" x="1416" y="56" width="1373" height="353" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1446" y="201" width="521" height="552" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -659,20 +772,13 @@
     <MESSAGE value="started work on MED" />
     <MESSAGE value="Minor refactor, major refactor coming soon with more documentation" />
     <MESSAGE value="Fixed PEP 8 violations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed PEP 8 violations" />
+    <MESSAGE value="Removed Translate function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed Translate function" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pyXPD/userapi/Util_commands.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1830">
-          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/Utils/Flow_Control.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
@@ -687,6 +793,8 @@
           <caret line="67" column="15" selection-start-line="67" selection-start-column="15" selection-end-line="67" selection-end-column="15" />
           <folding>
             <element signature="e#38#68#0" expanded="true" />
+            <element signature="e#2696#4013#0" expanded="false" />
+            <element signature="e#4046#4831#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -726,6 +834,8 @@
           <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
             <element signature="e#38#68#0" expanded="true" />
+            <element signature="e#2696#4013#0" expanded="false" />
+            <element signature="e#4046#4831#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -780,6 +890,8 @@
           <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
           <folding>
             <element signature="e#38#68#0" expanded="true" />
+            <element signature="e#2696#4013#0" expanded="false" />
+            <element signature="e#4046#4831#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -818,6 +930,8 @@
           <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
           <folding>
             <element signature="e#38#68#0" expanded="true" />
+            <element signature="e#2696#4013#0" expanded="false" />
+            <element signature="e#4046#4831#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -856,6 +970,8 @@
           <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
           <folding>
             <element signature="e#38#68#0" expanded="true" />
+            <element signature="e#2696#4013#0" expanded="false" />
+            <element signature="e#4046#4831#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -873,6 +989,8 @@
           <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
           <folding>
             <element signature="e#38#68#0" expanded="true" />
+            <element signature="e#2696#4013#0" expanded="false" />
+            <element signature="e#4046#4831#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -968,13 +1086,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pyXPD/userapi/Motor_commands.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="3750">
-          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/areaDetector/DetCore.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2865">
@@ -1045,12 +1156,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/docrunner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5058824" vertical-offset="4280" max-vertical-offset="5130">
+          <caret line="317" column="0" selection-start-line="317" selection-start-column="0" selection-end-line="317" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pyXPD/userapi/Motor_commands.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3900">
+          <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+          <folding>
+            <element signature="e#196#250#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/motion/motors/status.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63380283" vertical-offset="0" max-vertical-offset="1320">
-          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.24470589" vertical-offset="422" max-vertical-offset="2475">
+          <caret line="42" column="19" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
           <folding>
             <element signature="e#38#68#0" expanded="true" />
+            <element signature="e#2696#4013#0" expanded="false" />
+            <element signature="e#4046#4831#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -23,7 +23,7 @@ def where(motor=None):
         print motorD
     if motor in motorD.keys():
         posd = dict()
-        posd[motor] = caget(_conf.get('Motor PVs', option))
+        posd[motor] = caget(_conf.get('Motor PVs', motor))
         print posd
     else:
         posd = dict()
