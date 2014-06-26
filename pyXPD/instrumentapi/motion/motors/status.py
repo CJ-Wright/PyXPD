@@ -20,10 +20,6 @@ for option in pv_pass:
                       'res': caget(pv + '.MRES')}
 
 
-def trans(alias):
-    return _conf.get('Motor PVs', alias)
-
-
 def move(alias=None, value=None, wait=False, printop=False):
     # check final position within limits
     motor = motorD[alias]
