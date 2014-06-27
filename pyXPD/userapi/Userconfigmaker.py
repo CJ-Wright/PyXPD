@@ -11,29 +11,27 @@ import ConfigParser
 import time
 
 
-config=ConfigParser.SafeConfigParser()
-config.optionxform=str
+config = ConfigParser.SafeConfigParser()
+config.optionxform = str
 
-z='Info'
+z = 'Info'
 config.add_section(z)
 config.set(z, 'version', '0.0.2')
 config.set(z, 'Author', 'Christopher J. Wright')
-config.set(z, 'date of creation',(time.strftime("%m/%d/%Y")))
-config.set(z,'comments', 'None yet')
+config.set(z, 'date of creation', (time.strftime("%m/%d/%Y")))
+config.set(z, 'comments', 'None yet')
 
-#Gas Assignment Convention, VALVENAME,POSITION on VALVENAME
-z='Example User Gas Assignments'
+# Gas Assignment Convention, VALVENAME,POSITION on VALVENAME
+z = 'Example User Gas Assignments'
 config.add_section(z)
 config.set(z, 'F2', 'Valve_1:0')
 config.set(z, 'FOOF', 'Valve_1:2')
 config.set(z, 'SUPER AWESOME GAS', 'Valve_2:2')
 
-z='Temperature System'
+z = 'Temperature System'
 config.add_section(z)
-config. set(z,'Control', 'Eurotherm')
+config.set(z, 'Control', 'Eurotherm')
 config.set(z, 'Heater/Cooler', 'Resistive')
-
-
 
 with open('user.conf', 'wb') as configfile:
     config.write(configfile)

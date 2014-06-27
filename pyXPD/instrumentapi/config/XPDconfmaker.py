@@ -69,7 +69,7 @@ config.set(z, 'NumImagesRBV', d + s + 'NumImages_RBV')
 config.set(z, 'AcquireTime', d + s + 'AcquireTime')
 config.set(z, 'AcquireTimeRBV', d + s + 'AcquireTime_RBV')
 
-#Image handeling
+#Image handling
 s = 'TIFF1:'
 config.set(z, 'AutoS', d + s + 'AutoSave')
 config.set(z, 'AutoSRBV', d + s + 'AutoSave_RBV')

@@ -8,7 +8,8 @@ Use is subject to license terms and conditions.
 This module handles the user scans for the motors
 """
 from pyXPD.instrumentapi.motion.motors.status import *
-# from pyXPD.instrumentapi.areaDetector.DetCore import *
+import pyXPD.instrumentapi.motion.motors.status as status
+from pyXPD.instrumentapi.areaDetector.DetCore import *
 from pyXPD.userapi.Master_commands import printf
 from cothread.catools import *
 from pyXPD.instrumentapi.config._conf import _conf
@@ -38,14 +39,13 @@ def where(motor=None):
         print motorD
     if motor in motorD.keys():
         posd = dict()
-        posd[motor] = caget(_conf.get('Motor PVs', motor))
+        posd[motor] = caget(status.pv_pass[motor])
         print posd
     else:
         posd = dict()
-        for option in _conf.options('Motor PVs'):
-            if 'motor' in str(_conf.get('Motor PVs', option)):
-                posd[str(option)] = caget(_conf.get('Motor PVs', option))
-                print posd
+        for option in status.pv_pass.keys():
+            posd[str(option)] = caget(status.pv_pass[option])
+            print posd
         return posd
 
 
@@ -76,7 +76,7 @@ def ascan(alias, start, finish, step, func, *args, **kwargs):
 
     >>> ascan('samx', -1, 1, .5, printf, 5)
     start move
-    starting data aquesition
+    starting data acquisition
     ([-1.0, -0.5, 0.0, 0.5, 1.0], [5, 5, 5, 5, 5])
     """
 
@@ -86,7 +86,7 @@ def ascan(alias, start, finish, step, func, *args, **kwargs):
     # Use kwargs to change pv settings? i.e. motor speed?
     for entry in np.arange(start, finish + step, step):
         move(alias, entry, wait=True)
-        if x == None:
+        if x is None:
             print 'starting data aquesition'
             x = [position(alias)]
             y = [func(*args)]
@@ -128,8 +128,8 @@ def rscan(alias, start, finish, step, func, *args, **kwargs):
     y = None
     for entry in np.arange(float(position(alias)) + start, float(position(alias)) + finish + step, step):
         move(alias, entry, wait=True)
-        if x == None:
-            print 'starting data aquesition'
+        if x is None:
+            print 'starting data acquisition'
             x = [position(alias)]
             y = [func(*args)]
         else:
@@ -138,7 +138,7 @@ def rscan(alias, start, finish, step, func, *args, **kwargs):
     return x, y
 
 
-#TODO: Need new gscan output if any
+# TODO: Need new gscan output if any
 def gscan(list_of_moves, func, *args, **kwargs):
     """
     Most general scan, each row is a new direction with start stop and step functions
@@ -157,7 +157,7 @@ def gscan(list_of_moves, func, *args, **kwargs):
     A : ndarray
         array of motor positions and function outputs
 
-    >>> gscan([{'alias':'samx','start':-1,'finish':1,'step':.5,'movetype':'ABS'},{'alias':'samy','start':-1,'finish':1,'step':.5,'movetype':'ABS'}],printf, 5,)
+    >>> gscan([{'alias':'samx','start':-1,'finish':1,'step':.5, 'movetype':'ABS'},{'alias':'samy','start':-1,'finish':1,'step':.5,'movetype':'ABS'}],printf, 5,)
     samx
     start move
     starting data aquesition
@@ -171,9 +171,11 @@ def gscan(list_of_moves, func, *args, **kwargs):
         motormovedict = element
         print motormovedict['alias']
         if motormovedict['movetype'] == 'ABS':
-            A = ascan(motormovedict['alias'], motormovedict['start'], motormovedict['finish'], motormovedict['step'], func, *args)
+            A = ascan(motormovedict['alias'], motormovedict['start'], motormovedict['finish'], motormovedict['step'],
+                      func, *args)
         elif motormovedict['movetype'] == 'REL':
-            A = rscan(motormovedict['alias'], motormovedict['start'], motormovedict['finish'], motormovedict['step'], func, *args)
+            A = rscan(motormovedict['alias'], motormovedict['start'], motormovedict['finish'], motormovedict['step'],
+                      func, *args)
         else:
             raise Exception('Movetype not correctly specified')
         out[motormovedict['alias']] = A
@@ -182,10 +184,12 @@ def gscan(list_of_moves, func, *args, **kwargs):
 
 def stop(alias):
     """
-    Stop selected process, or all processies, NOT IMPLEMENTED
+    Stop selected process, or all processes, NOT IMPLEMENTED
     """
+    pass
 
-#TODO: these are called with wait functions
+
+# TODO: these are called with wait functions
 def mesh(ax1, ax2, func, *args, **kwargs):
     """
     Performs function on each position within the 2 coordinates, creating a matrix
@@ -232,7 +236,7 @@ def mesh(ax1, ax2, func, *args, **kwargs):
     B = None
     # kwargs['ax1']=ax1
     # kwargs['ax2']=ax2
-    if kwargs.has_key('serpentmove') == False:
+    if not kwargs.has_key('serpentmove'):
         kwargs['serpentmove'] = True
     # TODO: Compress these if functions down to a single if and else
     if ax1['movetype'] == 'REL':
@@ -245,17 +249,17 @@ def mesh(ax1, ax2, func, *args, **kwargs):
         ax1graphax = np.arange(ax1['start'], ax1['finish'] + ax1['step'], ax1['step'])
     if ax2['movetype'] == 'ABS':
         ax2graphax = np.arange(ax2['start'], ax2['finish'] + ax2['step'], ax2['step'])
-    if kwargs['serpentmove'] == False:
+    if not kwargs['serpentmove']:
         print 'start move'
-        for entry in ax1graphax:
-            move(ax1['alias'], entry, wait=True)
-            for entry in ax2graphax:
-                move(ax2['alias'], entry, wait=True)
-                if A == None:
+        for entry1 in ax1graphax:
+            move(ax1['alias'], entry1, wait=True)
+            for entry2 in ax2graphax:
+                move(ax2['alias'], entry2, wait=True)
+                if A is None:
                     A = [position(ax2['alias']), func(*args)]
                 else:
                     A = np.vstack((A, [position(ax2['alias']), func(*args)]))
-            if B == None:
+            if B is None:
                 B = A[:, 1]
                 A = None
             else:
@@ -264,23 +268,23 @@ def mesh(ax1, ax2, func, *args, **kwargs):
     else:
         print 'start move'
         i = 0
-        for entry in ax1graphax:
-            move(ax1['alias'], entry, wait=True)
+        for entry1 in ax1graphax:
+            move(ax1['alias'], entry1, wait=True)
             if i % 2 == 0:
-                for entry in ax2graphax:
-                    move(ax2['alias'], entry, wait=True)
-                    if A == None:
+                for entry2 in ax2graphax:
+                    move(ax2['alias'], entry2, wait=True)
+                    if A is None:
                         A = [position(ax2['alias']), func(*args)]
                     else:
                         A = np.vstack((A, [position(ax2['alias']), func(*args)]))
             else:
-                for entry in -ax2graphax:
-                    move(ax2['alias'], entry, wait=True)
-                    if A == None:
+                for entry2 in -ax2graphax:
+                    move(ax2['alias'], entry2, wait=True)
+                    if A is None:
                         A = [position(ax2['alias']), func(*args)]
                     else:
                         A = np.vstack((A, [position(ax2['alias']), func(*args)]))
-            if B == None:
+            if B is None:
                 B = A[:, 1]
                 A = None
             else:

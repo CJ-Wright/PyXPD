@@ -4,14 +4,14 @@ Use is subject to license terms and conditions.
 
 @author: Christopher J. Wright
 
-This module handles the gas switching valve and the flowmeters effectivly aliasing the switching valve positions and \
+This module handles the gas switching valve and the flowmeters effectively aliasing the switching valve positions and \
 flowmeters to the gases connected.
 
 .. warning:: This module is somewhat based on a certain geometry for the gas flow.  This geometry has the flow meters \
 attached to the switching valve.  This does not impact the switching valve functions, but is needed for the flow meter \
 gas based aliasing.
 
-.. note:: Some of the gas handeling is based on the assumption that there are two gas valves, which are chained one \
+.. note:: Some of the gas handling is based on the assumption that there are two gas valves, which are chained one \
 into another at position 5 on Valve_1.  The module may handle parallel switching valves, however this has not been \
 simulated/tested.
 """
@@ -112,7 +112,7 @@ def gas_position(Valve=None, Pos=None):
     ('Valve_2', 2)
     """
 
-    #If no parameters are passed in report the position
+    # If no parameters are passed in report the position
     if Pos is None and Valve is None:
         if 'Valve_2' in valve_asg.keys():
             if int(caget(pv_pass['Valve_1'])) is not int(valve_asg['Valve_2']['Pos']):

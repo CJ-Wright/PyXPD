@@ -22,7 +22,7 @@ from pyXPD.userapi._userconf import _userconf
 import time
 from decimal import *
 
-#load the temperature system from the user configuration
+# load the temperature system from the user configuration
 if _userconf.has_section('Temperature System'):
     if _userconf.get('Temperature System', 'Control') in ['Euro', 'Eurotherm']:
         import eurotherm3500
@@ -57,7 +57,7 @@ if _userconf.has_section('Temperature System'):
 
         def res_check(value=None):
             """
-            Allows for the checking of the requested temperature agains the instrument resolution
+            Allows for the checking of the requested temperature against the instrument resolution
             """
             if value is None:
                 return float(_conf.get(z, 'Resolution'))
@@ -119,7 +119,7 @@ def Temp_set(Start_Temp=None, Stop_Temp=None, Ramp=None, Time=None):
         try:
             internal_ramp = (Stop_Temp - Start_Temp) / (Time / 60)
         #TODO: need less broad except, try and find out what the exception is
-        except :
+        except:
             internal_ramp = deframp
 
         Ramp = internal_ramp

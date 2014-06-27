@@ -46,6 +46,7 @@ def Gas(new_gas=None):
         print '%s is not a recognised gas, please change gas configuration.' % (new_gas,)
 
 
+# TODO: turn the ordered dictionary into a list
 def TempProg(orderedD=None):
     """
     Sets and starts the temperature program
@@ -53,7 +54,7 @@ def TempProg(orderedD=None):
     Parameters
     ----------
     orderedD: ordered dictionary
-        This dictionary contains the segements of the program in order.  Each sub-directory is a new segment
+        This dictionary contains the segments of the program in order.  Each sub-directory is a new segment
         i.e. {0:{Start:25, Stop:75, Time: 20},1:{Start:75, Stop:350, Ramp: 35}}
 
     Subparameters
@@ -72,7 +73,8 @@ def TempProg(orderedD=None):
         Temp_set(**orderedD[key])
 
 
-def Mix(dictionary=None, total_flow=None, equilibrate=False):
+# TODO: remove sleep method
+def Mix(dictionary=None, total_flow=None, equilibration=False):
     """
     Mixes gases together for use in flow cell
 
@@ -83,8 +85,8 @@ def Mix(dictionary=None, total_flow=None, equilibrate=False):
         The values are either in flow units or in percent if total_flow is used
     total_flow: float
         If total_flow is used the values in the dictionary are interpreted as percents of the total flow
-    equilibrate: bool
-        If equilibrate is true the program will wait a max of 45 seconds for the input gas flow to equal \
+    equilibration: bool
+        If equilibration is true the program will wait a max of 45 seconds for the input gas flow to equal \
         the exhaust flow
     """
     # absolute flow control
@@ -101,14 +103,15 @@ def Mix(dictionary=None, total_flow=None, equilibrate=False):
             Flow(key, dictionary[key] * total_flow)
         total = total_flow
     # wait for equilibration
-    if equilibrate is True:
+    if equilibration is True:
         for i in range(0, 15):
             if Flow('EX') == total:
                 break
             else:
                 print "Pressure not equalized, waiting 3 seconds"
                 time.sleep(3)
-                i += 1
+                #TODO: double check that this i is not needed
+                # i += 1
 
 
 def Flow(Gas_Name=None, Value=None):

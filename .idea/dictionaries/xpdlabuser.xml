@@ -1,13 +1,31 @@
 <component name="ProjectDictionaryState">
   <dictionary name="xpdlabuser">
     <words>
+      <w>arkilic</w>
       <w>beamline</w>
       <w>brookhaven</w>
+      <w>callabacks</w>
+      <w>cryostream</w>
+      <w>cryosystems</w>
+      <w>eurotherm</w>
       <w>flowmeter</w>
+      <w>flowmeters</w>
+      <w>gscan</w>
       <w>instrumentapi</w>
+      <w>motorx</w>
+      <w>nsls</w>
       <w>photodiode</w>
       <w>photodiodes</w>
+      <w>rmove</w>
+      <w>rscan</w>
+      <w>samx</w>
+      <w>samy</w>
       <w>setpoint</w>
+      <w>subframe</w>
+      <w>subframes</w>
+      <w>userapi</w>
+      <w>userapis</w>
+      <w>xpdlabuser</w>
     </words>
   </dictionary>
 </component>

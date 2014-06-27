@@ -11,14 +11,16 @@ This module loads the beamline configuration file so it can be accessed by other
 
 from cothread.catools import *
 
+
 def __loadConfig():
     """
     Load the configuration file, looking a few possible sources for XPD.conf
     """
     import os.path
     import ConfigParser
-    cf=ConfigParser.SafeConfigParser()
-    cf.optionxform=str
+
+    cf = ConfigParser.SafeConfigParser()
+    cf.optionxform = str
     cf.read([
         '/etc/XPD.conf',
         os.path.expanduser('~/XPD.conf'),
@@ -26,8 +28,9 @@ def __loadConfig():
         '/home/xpdlabuser/Spyder_Projects/XPD+_architecture/pyXPD/instrumentapi/config/XPD.conf'
     ])
     return cf
-    
-_conf=__loadConfig()
+
+
+_conf = __loadConfig()
 
 
 def __initPV(_conf=_conf, section=None):
@@ -46,17 +49,17 @@ def __initPV(_conf=_conf, section=None):
     pv_fail, pv_pass: dict
         Dictionaries of the PVs that failed and passed the connection test, respectively
     """
-    pv_fail={}
-    pv_pass={}
-    print 'Connecitng '+ section
+    pv_fail = {}
+    pv_pass = {}
+    print 'Connecting ' + section
     for option in _conf.options(section):
         try:
             connect(_conf.get(section, option), timeout=1)
             print 'PV passed:', option
-            pv_pass[option]=_conf.get(section, option)
+            pv_pass[option] = _conf.get(section, option)
         except:
             print 'PV failed:', option
-            pv_fail[option]=_conf.get(section ,option)
+            pv_fail[option] = _conf.get(section, option)
             pass
-    print section+' connection complete'
+    print section + ' connection complete'
     return pv_fail, pv_pass

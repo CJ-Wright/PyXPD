@@ -10,9 +10,9 @@ Design Notes:
     Three major functions CaptureSingle, CaptureMulti, CaptureCont
     Each function must contain fields for:
         Filename
-        Filename incrementor
+        Filename incrementer
         Metadata to put into the filename
-        Exposiure time
+        Exposure time
         Subframes
         Frames for Multi
         Some field for dark field acquisition pattern
@@ -33,24 +33,25 @@ import time
 """Detector Commands"""
 
 
-def prep_experiment(inputgain={'Use': True, 'State': 'Default', 'OldFile':True,'Frames':10},
-                    inputoffset={'Use': True, 'State': 'Default', 'OldFile':True,'Frames':10},
-                    inputbadpixel=dict()):
+def prep_experiment(inputgain=None, inputoffset=None, inputbadpixel=None):
     """
     This function prepares the detector for an experiment, by checking the various detector based corrections and \
-    retakeing any if nessisary.  This also checks for available x-rays
+    retaking any if necessary.  This also checks for available x-rays
     :param inputgain:
     :return
     """
+    if not inputbadpixel: inputbadpixel = dict()
+    if not inputoffset: inputoffset = {'Use': True, 'State': 'Default', 'OldFile': True, 'Frames': 10}
+    if not inputgain: inputgain = {'Use': True, 'State': 'Default', 'OldFile': True, 'Frames': 10}
     # Confirm X-rays
 
-    #load Gain file, if old take another gain file
+    # load Gain file, if old take another gain file
     if inputgain['Use'] is True:
         Gainfile = load_Gain(_conf.get('Single Default', 'Gain File'))
         st = os.stat(Gainfile)
         age = st.st_mtime
         if inputgain['OldFile'] is False:
-            if age < _conf.get('Single Default', 'Gain_age')-time.time or inputgain['State'] is 'New' or Gain() is 0:
+            if age < _conf.get('Single Default', 'Gain_age') - time.time or inputgain['State'] is 'New' or Gain() is 0:
                 # Take Gain images, using default settings, or other
                 print 'Taking new gain measurement'
                 if inputgain['Frames'] is 'Default':
@@ -61,14 +62,15 @@ def prep_experiment(inputgain={'Use': True, 'State': 'Default', 'OldFile':True,'
     else:
         Gain(False)
 
-    #Check Offset age
-    #Take Offset images, using default settings or other
+    # Check Offset age
+    # Take Offset images, using default settings or other
     if inputoffset['Use'] is True:
         Offsetfile = load_Offset(_conf.get('Single Default', 'Offset File'))
         st = os.stat(Offsetfile)
         age = st.st_mtime
         if inputoffset['OldFile'] is False:
-            if age < _conf.get('Single Default', 'Offset_age')-time.time or inputoffset['State'] is 'New' or Offset() is 0:
+            if age < _conf.get('Single Default', 'Offset_age') - time.time or inputoffset[
+                'State'] is 'New' or Offset() is 0:
                 # Take Offset images, using default settings, or other
                 print 'Taking new gain measurement'
                 if inputoffset['Frames'] is 'Default':
@@ -78,10 +80,10 @@ def prep_experiment(inputgain={'Use': True, 'State': 'Default', 'OldFile':True,'
                 Offset(Use=True)
     else:
         Offset(False)
-    #OR Load Offset
-    #Check Bad Pixel age
-    #Take new Bad Pixel stuff???
-    #Load Gain
+    # OR Load Offset
+    # Check Bad Pixel age
+    # Take new Bad Pixel stuff???
+    # Load Gain
     return True
 
 
@@ -111,7 +113,7 @@ def CaptureSingle(pathname=None, filename=None, subframes=None, exp_time=None, *
         Number of seconds of integration time for each subframe
     Automatic: bool
         If True then uses statistical analysis to create an integration time and \
-        number of subframes to make the output file statisticly signifigant out to \
+        number of subframes to make the output file statistically significant out to \
         a Q(A^-1) specified by the user
     
     Returns
@@ -129,14 +131,15 @@ def CaptureSingle(pathname=None, filename=None, subframes=None, exp_time=None, *
         if kwargs['Dark_pattern'] is 'Before' or 'Split':
             print 'Start Dark Image'
             if kwargs['Dark_pattern'] is 'Split':
+                # TODO: np.ceil not found in __init__
                 kwargs['Dark_subframes'] = np.ceil(kwargs['Dark_subframes'] / 2)
             Dark_Field(pathname, filename,
                        kwargs['file_format'], kwargs['metadata'], kwargs['increment'],
                        kwargs['Dark_subframes'], kwargs['Dark_exp_time'])
         Shutter(1)
         Acquire('Start', subframes, Time=exp_time)
-        #TODO: Scrubber Block, with scrubbed image analysis?
-        #Dark Image Block
+        # TODO: Scrubber Block, with scrubbed image analysis?
+        # Dark Image Block
         if kwargs['Dark_pattern'] is 'After' or 'Split':
             print 'Start Dark Image'
             Dark_Field(pathname, filename,
@@ -171,5 +174,5 @@ def CaptureMulti(base_filename, filename_iterator, subframes, seconds_per_subfra
         Numpy array which represents the images
     """
     # check that shutter is open
-    #take darkfield image? or do this inside the core?
+    # take darkfield image? or do this inside the core?
     pass

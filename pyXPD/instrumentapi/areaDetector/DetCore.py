@@ -13,7 +13,7 @@ detector specific modules.
 
 """
 
-import cothread
+
 from cothread.catools import *
 from pyXPD.instrumentapi.config._conf import _conf, __initPV
 import numpy as np
@@ -26,7 +26,7 @@ __detectorD = dict()
 for option in pv_pass.keys():
     __detectorD[option] = pv_pass[option]
 
-#TODO: Make a __initFile function to initialize files
+# TODO: Make a __initFile function to initialize files
 __fileD = dict()
 for option in _conf.options('Detector files'):
     __fileD[option] = _conf.get('Detector files', option)
@@ -52,11 +52,12 @@ def wave_conv_str(data):
         arr_string = "".join(map(chr, (list(data)))[:-1])
         return arr_string
 
+
 #TODO: Split up SetFile on a PV basis
 def SetFile(dirname=None, filename=None,
             metadata=None, increment=None, auto_save=True, file_format=None):
     """
-    Set the path, filename, increment, and file_format in preperation for acuqesition of images
+    Set the path, filename, increment, and file_format in preparation for acquisition of images
 
     Parameters
     -----------
@@ -80,7 +81,7 @@ def SetFile(dirname=None, filename=None,
         NDFilePath = dirname
         caput(__detectorD['Path'], wave_conv_str(NDFilePath))
 
-    if auto_save == True:
+    if auto_save:
         NDAutoSave = 1
     else:
         NDAutoSave = 0
@@ -202,7 +203,7 @@ def NumImages(Number=None):
 
     >>> NumImages()
     """
-    if Number != None and type(Number) is int:
+    if Number is not None and type(Number) is int:
         caput(__detectorD['NumImages'], Number)
     elif type(Number) is not int:
         print 'The number of images to be generated must be an integer %s is not an integer' % (Number,)
@@ -229,7 +230,7 @@ def Exposures(exp=None):
 
     >>> Exposures()
     """
-    if exp != None and type(exp) is int:
+    if exp is not None and type(exp) is int:
         caput(__detectorD['NumImages'], exp)
     elif type(exp) is not int:
         print 'The number of images to be generated must be an integer %s is not an integer' % (exp,)
@@ -303,7 +304,7 @@ def Shutter(state=None):
     >>> Shutter()
 
     """
-    if state == None:
+    if state is None:
         if _conf.get('Util PVs', 'shutter') == 1:
             print 'Shutter open'
             return 1

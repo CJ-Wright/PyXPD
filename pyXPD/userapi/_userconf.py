@@ -11,14 +11,16 @@ This module imports the user based configuration files
 
 from cothread.catools import *
 
+
 def __loaduserConfig():
     """
     load user config
     """
     import os.path
     import ConfigParser
-    cf=ConfigParser.SafeConfigParser()
-    cf.optionxform=str
+
+    cf = ConfigParser.SafeConfigParser()
+    cf.optionxform = str
     cf.read([
         # '/etc/user.conf',
         os.path.expanduser('~/user.conf'),
@@ -26,5 +28,6 @@ def __loaduserConfig():
         '/home/xpdlabuser/Spyder_Projects/XPD+_architecture/pyXPD/userapi/user.conf'
     ])
     return cf
-    
-_userconf=__loaduserConfig()
+
+
+_userconf = __loaduserConfig()

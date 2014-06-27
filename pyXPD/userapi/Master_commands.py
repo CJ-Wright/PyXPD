@@ -6,7 +6,7 @@ Use is subject to license terms and conditions.
 
 @author: Christopher J. Wright
 
-This is the master module for the userapi, it loads all the other userapis which should be loaded at the begining of a \
+This is the master module for the userapi, it loads all the other userapis which should be loaded at the beginning of a \
 control ipython session
 """
 from pyXPD.userapi import *
@@ -15,8 +15,9 @@ from cothread.catools import *
 from pyXPD.instrumentapi.config._conf import _conf, __initPV
 import inspect
 
+
 def printf(value):
-#    print value, test function
+    # print value, test function
     return value
 
 
@@ -35,10 +36,10 @@ def helper(func, options='args'):
 
 
     """
-    answer=inspect.getargspec(func)
-    if options=='args':
+    answer = inspect.getargspec(func)
+    if options == 'args':
         print answer[0]
-    elif options=='default':
+    elif options == 'default':
         print answer[-1]
     else:
         print func.__doc__
