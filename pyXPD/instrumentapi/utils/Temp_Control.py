@@ -90,6 +90,9 @@ def Temp_set(Start_Temp=None, Stop_Temp=None, Ramp=None, Time=None):
             If this is none ramp until stop temperature is met
 
 
+    >>> Temp_set(25, 35, Time=5)
+
+
     Notes
     -----
     Not all fields populated, which may be ok
@@ -115,7 +118,8 @@ def Temp_set(Start_Temp=None, Stop_Temp=None, Ramp=None, Time=None):
     if Ramp is None:
         try:
             internal_ramp = (Stop_Temp - Start_Temp) / (Time / 60)
-        except:
+        #TODO: need less broad except, try and find out what the exception is
+        except :
             internal_ramp = deframp
 
         Ramp = internal_ramp

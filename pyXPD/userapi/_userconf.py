@@ -12,6 +12,9 @@ This module imports the user based configuration files
 from cothread.catools import *
 
 def __loaduserConfig():
+    """
+    load user config
+    """
     import os.path
     import ConfigParser
     cf=ConfigParser.SafeConfigParser()

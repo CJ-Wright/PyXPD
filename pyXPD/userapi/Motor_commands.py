@@ -4,20 +4,35 @@ Copyright (c) 2014 Brookhaven National Laboratory All rights reserved.
 Use is subject to license terms and conditions.
 
 @author: Christopher J. Wright
+
+This module handles the user scans for the motors
 """
 from pyXPD.instrumentapi.motion.motors.status import *
-from pyXPD.instrumentapi.areaDetector.DetCore import *
-import cothread
+# from pyXPD.instrumentapi.areaDetector.DetCore import *
+from pyXPD.userapi.Master_commands import printf
 from cothread.catools import *
 from pyXPD.instrumentapi.config._conf import _conf
+import numpy as np
 
 """Motor Commands"""
 
 
 def where(motor=None):
     """
+    Get information on the motors
+
+    Parameters
+    ----------
+    motor: str
+        Motor alias
+
     Returns:
+    -------
         motor coordinates
+
+    >>> where('samx')
+
+    >>> where()
     """
     if motor == 'all':
         print motorD
@@ -52,13 +67,17 @@ def ascan(alias, start, finish, step, func, *args, **kwargs):
         This function gets called after each step is concluded
     *args:
         Function arguments
+
     Returns
     -------
-    A : ndarray
+    x, y : arrays
         array of motor positions and function outputs
-    Example
-    -------
-    ascan('samx',-1, 1, .5,printf, 5)
+
+
+    >>> ascan('samx', -1, 1, .5, printf, 5)
+    start move
+    starting data aquesition
+    ([-1.0, -0.5, 0.0, 0.5, 1.0], [5, 5, 5, 5, 5])
     """
 
     x = None
@@ -95,27 +114,32 @@ def rscan(alias, start, finish, step, func, *args, **kwargs):
         This function gets called after each step is concluded
     *args:
         Function arguments
+
     Returns
     -------
     A : ndarray
         array of motor positions and function outputs
-    Example
-    -------
-    rscan(printf, 5, step=.1, finish=5, start=-5, alias='samx')
+
+    >>> rscan('samx', -1, 1, .5, printf, 5)
+    starting data aquesition
+    ([0.0, 0.5, 1.0, 1.5, 2.0], [5, 5, 5, 5, 5])
     """
-    A = None
+    x = None
+    y = None
     for entry in np.arange(float(position(alias)) + start, float(position(alias)) + finish + step, step):
         move(alias, entry, wait=True)
-        func(*args)
-        if A == None:
+        if x == None:
             print 'starting data aquesition'
-            A = [position(alias), func(*args)]
+            x = [position(alias)]
+            y = [func(*args)]
         else:
-            A = np.vstack((A, [position(alias), func(*args)]))
-    return A
+            x.append(position(alias))
+            y.append(func(*args))
+    return x, y
 
 
-def gscan(func, *args, **kwargs):
+#TODO: Need new gscan output if any
+def gscan(list_of_moves, func, *args, **kwargs):
     """
     Most general scan, each row is a new direction with start stop and step functions
     
@@ -127,22 +151,29 @@ def gscan(func, *args, **kwargs):
         Function arguments
     **kwargs:
         Keyword arguments for the scan
+
     Returns
     -------
     A : ndarray
         array of motor positions and function outputs
-    Example
-    -------
-    gscan(printf,5,ax1={'alias':'samx','start':-1,'finish':1,'step':.5,'movetype':'ABS'},ax2={'alias':'samy','start':-1,'finish':1,'step':.5,'movetype':'ABS'})
+
+    >>> gscan([{'alias':'samx','start':-1,'finish':1,'step':.5,'movetype':'ABS'},{'alias':'samy','start':-1,'finish':1,'step':.5,'movetype':'ABS'}],printf, 5,)
+    samx
+    start move
+    starting data aquesition
+    samy
+    start move
+    starting data aquesition
+    {'samy': ([-1.0, -0.5, 0.0, 0.5, 1.0], [5, 5, 5, 5, 5]), 'samx': ([-1.0, -0.5, 0.0, 0.5, 1.0], [5, 5, 5, 5, 5])}
     """
     out = dict()
-    for key in sorted(kwargs.keys()):
-        motormovedict = kwargs[key]
+    for element in list_of_moves:
+        motormovedict = element
         print motormovedict['alias']
         if motormovedict['movetype'] == 'ABS':
-            A = ascan(func, *args, **motormovedict)
+            A = ascan(motormovedict['alias'], motormovedict['start'], motormovedict['finish'], motormovedict['step'], func, *args)
         elif motormovedict['movetype'] == 'REL':
-            A = rscan(func, *args, **motormovedict)
+            A = rscan(motormovedict['alias'], motormovedict['start'], motormovedict['finish'], motormovedict['step'], func, *args)
         else:
             raise Exception('Movetype not correctly specified')
         out[motormovedict['alias']] = A
@@ -154,7 +185,7 @@ def stop(alias):
     Stop selected process, or all processies, NOT IMPLEMENTED
     """
 
-
+#TODO: these are called with wait functions
 def mesh(ax1, ax2, func, *args, **kwargs):
     """
     Performs function on each position within the 2 coordinates, creating a matrix
@@ -184,10 +215,16 @@ def mesh(ax1, ax2, func, *args, **kwargs):
         This array holds all the points tested in the ax1 direction
     ax2graphax: 1D array
         This array holds all the points tested in the ax2 direction
-    
-    Example
-    -------
-    mesh(printf,-1,serpentmove=True, ax1={'movetype': 'ABS', 'alias': 'samy', 'step': 0.5, 'finish': 1, 'start': -1},ax2={'movetype': 'ABS', 'alias': 'samx', 'step': 0.5, 'finish': 1, 'start': -1})
+
+    >>> mesh({'movetype': 'ABS', 'alias': 'samy', 'step': 0.5, 'finish': 1, 'start': -1},{'movetype': 'ABS', 'alias': 'samx', 'step': 0.5, 'finish': 1, 'start': -1},printf,-1,serpentmove=True)
+    start move
+    (array([[-1., -1., -1., -1., -1.],
+           [-1., -1., -1., -1., -1.],
+           [-1., -1., -1., -1., -1.],
+           [-1., -1., -1., -1., -1.],
+           [-1., -1., -1., -1., -1.]]), array([-1. , -0.5,  0. ,  0.5,  1. ]), array([-1. , -0.5,  0. ,  0.5,  1. ]))
+
+
     """
     # print 'n\n\n'
     # print kwargs['serpentmove']

@@ -5,6 +5,9 @@ Copyright (c) 2014 Brookhaven National Laboratory All rights reserved.
 Use is subject to license terms and conditions.
 
 @author: Christopher J. Wright
+
+This is the master module for the userapi, it loads all the other userapis which should be loaded at the begining of a \
+control ipython session
 """
 from pyXPD.userapi import *
 import cothread
@@ -18,6 +21,20 @@ def printf(value):
 
 
 def helper(func, options='args'):
+    """
+    Function reveals information about other functions
+
+    Parameters
+    ----------
+    func: function
+        Function to learn more about
+    options: {'args', 'default'}
+        If args give the argument names
+        If defualt give the default values
+        Else return the doc string
+
+
+    """
     answer=inspect.getargspec(func)
     if options=='args':
         print answer[0]
