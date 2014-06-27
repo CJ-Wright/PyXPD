@@ -18,7 +18,7 @@ import numpy as np
 import os
 
 
-confail, conpass = __initPV(section='Detector PVs')
+pv_fail, pv_pass = __initPV(section='Detector PVs')
 
 __detectorD = dict()
 for option in _conf.options('Detector PVs'):

@@ -14,7 +14,7 @@ import numpy as np
 import os
 
 
-confail, conpass=__initPV(section='PE PVs')
+pv_fail, pv_pass=__initPV(section='PE PVs')
 
 #TODO: make file initiator for detector corrections
 

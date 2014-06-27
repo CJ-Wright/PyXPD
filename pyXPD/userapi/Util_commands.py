@@ -1,19 +1,19 @@
-'''
-Copyright (c) 2014 Brookhaven National Laboratory All rights reserved. 
+"""
+Copyright (c) 2014 Brookhaven National Laboratory All rights reserved.
 Use is subject to license terms and conditions.
 
-@author: Christopher J. Wright'''
+@author: Christopher J. Wright"""
 __author__ = 'Christopher J. Wright'
 
-from pyXPD.instrumentapi.Utils.Gas_Valve import *
-from pyXPD.instrumentapi.Utils.Counts import *
-from pyXPD.instrumentapi.Utils.Temp_Control import *
-from pyXPD.instrumentapi.Utils.Flow_Control import *
-import cothread
+from pyXPD.instrumentapi.utils.Gas_Valve import *
+from pyXPD.instrumentapi.utils.Counts import *
+from pyXPD.instrumentapi.utils.Temp_Control import *
+from pyXPD.instrumentapi.utils.Flow_Control import *
 from cothread.catools import *
 from pyXPD.instrumentapi.config._conf import _conf
 import time
 from collections import OrderedDict
+
 
 def Gas(new_gas=None):
     """
@@ -24,7 +24,7 @@ def Gas(new_gas=None):
     :rtype: str
     """
     if new_gas is None:
-        cur_pos=gas_position()
+        cur_pos = gas_position()
         # print cur_pos
         # print valve_asg
         for key, valvepos in valve_asg.iteritems():
@@ -33,10 +33,10 @@ def Gas(new_gas=None):
             # print 'curpos', cur_pos
             # print valvepos['Valve'], cur_pos[0], valvepos['Pos'], cur_pos[1]
             # print valvepos['Valve']==cur_pos[0], valvepos['Pos']==str(cur_pos[1])
-            if valvepos['Valve']==cur_pos[0] and valvepos['Pos']==int(cur_pos[1]):
+            if valvepos['Valve'] == cur_pos[0] and valvepos['Pos'] == int(cur_pos[1]):
                 # print key
                 return key
-    elif valve_asg.has_key(new_gas):
+    elif new_gas in valve_asg.keys():
         # print valve_asg[new_gas]
         gas_position(**valve_asg[new_gas])
         return Gas()
@@ -47,11 +47,13 @@ def Gas(new_gas=None):
 def TempProg(orderedD=None):
     """
     Sets and starts the temperature program
+
     Parameters
     ----------
     orderedD: ordered dictionary
         This dictionary contains the segements of the program in order.  Each sub-directory is a new segment
         i.e. {0:{Start:25, Stop:75, Time: 20},1:{Start:75, Stop:350, Ramp: 35}}
+
     Subparameters
     -------------
     Start: float, optional
@@ -63,9 +65,10 @@ def TempProg(orderedD=None):
     Time: float, optional
         Duration of program segment
     """
-    #Expecting entries to contain Start Temp, Stop Temp, Ramp Rate,and Time for each segment
+    # Expecting entries to contain Start Temp, Stop Temp, Ramp Rate,and Time for each segment
     for key in orderedD.keys():
         Temp_set(**orderedD[key])
+
 
 def Mix(dictionary=None, total_flow=None, equilibrate=False):
     """
@@ -79,30 +82,31 @@ def Mix(dictionary=None, total_flow=None, equilibrate=False):
     total_flow: float
         If total_flow is used the values in the dictionary are interpreted as percents of the total flow
     equilibrate: bool
-        If equilibrate is true the program will wait a max of 45 seconds for the input gas flow to equal the exhaust flow
+        If equilibrate is true the program will wait a max of 45 seconds for the input gas flow to equal \
+        the exhaust flow
     """
-    #absolute flow control
+    # absolute flow control
     if total_flow is None:
-        total=0
+        total = 0
         for key in dictionary.keys():
             Gas(key)
             Flow(key, dictionary[key])
-            total+=dictionary[key]
-    #relative flow control
+            total += dictionary[key]
+    # relative flow control
     else:
         for key in dictionary.keys():
             Gas(key)
-            Flow(key, dictionary[key]*total_flow)
-        total=total_flow
-    #wait for equilibration
-    if equilibrate==True:
-        for i in range(0,15):
-            if Flow('EX')==total:
+            Flow(key, dictionary[key] * total_flow)
+        total = total_flow
+    # wait for equilibration
+    if equilibrate is True:
+        for i in range(0, 15):
+            if Flow('EX') == total:
                 break
             else:
                 print "Pressure not equalized, waiting 3 seconds"
                 time.sleep(3)
-                i+=1
+                i += 1
 
 
 def Flow(Gas_Name=None, Value=None):
@@ -110,7 +114,7 @@ def Flow(Gas_Name=None, Value=None):
         for option in _conf.options('Flow Meter PVs'):
             print 'Flow at Meter %s is %s' % (option, get_flow(option), )
     elif Value is None:
-        print 'Flow for %s is %s' % (Gas_Name, get_flow(flowname_from_gas(Gas_Name))) # need to get flow from gas name
+        print 'Flow for %s is %s' % (Gas_Name, get_flow(flow_name_from_gas(Gas_Name)))  # need to get flow from gas name
     else:
-        #Find flow meter associated with Gas
-        set_flow(flowname_from_gas(Gas_Name),Value)
+        # Find flow meter associated with Gas
+        set_flow(flow_name_from_gas(Gas_Name), Value)

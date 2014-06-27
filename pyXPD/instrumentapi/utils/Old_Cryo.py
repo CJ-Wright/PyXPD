@@ -1,8 +1,11 @@
-'''
-Copyright (c) 2014 Brookhaven National Laboratory All rights reserved. 
+"""
+Copyright (c) 2014 Brookhaven National Laboratory All rights reserved.
 Use is subject to license terms and conditions.
 
-@author: Christopher J. Wright'''
+@author: Christopher J. Wright
+
+This module is from the NSLS X-17A cryostream interface
+"""
 __author__ = 'Christopher J. Wright'
 
 import serial
@@ -129,16 +132,16 @@ def cm_input():
     response = ""
     c = ''
     i = 0
-    while (1):
+    while 1:
         try:
             c = cryo_port.read(1)
         except KeyboardInterrupt:
             print "Interrupt caught while reading!\n"
             break
-        if (c == ''):
+        if c == '':
             print "cryo timeout\n"
             break
-        if (ord(c) == 32):
+        if ord(c) == 32:
             # print "found start of status\n"
             break
     response = c
