@@ -6,7 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26aa8b55-0cd0-4397-bc56-d31cdd75d2c0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pyXPD/instrumentapi/__init__.py" afterPath="$PROJECT_DIR$/pyXPD/instrumentapi/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pyXPD/instrumentapi/areaDetector/DetCore.py" afterPath="$PROJECT_DIR$/pyXPD/instrumentapi/areaDetector/DetCore.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="XPD+_architecture.iws" />
@@ -30,11 +30,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="__init__.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/__init__.py">
+      <file leaf-file-name="DetCore.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/areaDetector/DetCore.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.105882354" vertical-offset="0" max-vertical-offset="850">
-              <caret line="6" column="105" selection-start-line="6" selection-start-column="105" selection-end-line="6" selection-end-column="105" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="110" max-vertical-offset="960">
+              <caret line="54" column="37" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
+              <folding>
+                <element signature="e#972#1404#0" expanded="false" />
+                <element signature="e#1565#3612#0" expanded="false" />
+                <element signature="e#3666#4476#0" expanded="false" />
+                <element signature="e#4511#4965#0" expanded="false" />
+                <element signature="e#5055#5696#0" expanded="false" />
+                <element signature="e#5728#6316#0" expanded="false" />
+                <element signature="e#6352#6538#0" expanded="false" />
+                <element signature="e#6711#7434#0" expanded="false" />
+                <element signature="e#7466#8479#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DetPE.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/areaDetector/DetPE.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1305">
+              <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -99,12 +119,12 @@
         <option value="$PROJECT_DIR$/pyXPD/instrumentapi/utils/Flow_Control.py" />
         <option value="$PROJECT_DIR$/pyXPD/instrumentapi/utils/Old_Cryo.py" />
         <option value="$PROJECT_DIR$/pyXPD/userapi/Util_commands.py" />
-        <option value="$PROJECT_DIR$/pyXPD/instrumentapi/areaDetector/DetCore.py" />
         <option value="$PROJECT_DIR$/pyXPD/instrumentapi/areaDetector/DetPE.py" />
         <option value="$PROJECT_DIR$/pyXPD/userapi/_userconf.py" />
         <option value="$PROJECT_DIR$/pyXPD/instrumentapi/utils/Temp_Control.py" />
         <option value="$PROJECT_DIR$/pyXPD/instrumentapi/utils/Gas_Valve.py" />
         <option value="$PROJECT_DIR$/pyXPD/instrumentapi/__init__.py" />
+        <option value="$PROJECT_DIR$/pyXPD/instrumentapi/areaDetector/DetCore.py" />
       </list>
     </option>
   </component>
@@ -205,6 +225,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="instrumentapi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XPD+_architecture" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XPD+_architecture" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pyXPD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="instrumentapi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="areaDetector" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -585,7 +627,11 @@
       <created>1403832340341</created>
       <updated>1403832340341</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Documented most of the instrument api except for the detector">
+      <created>1403832429631</created>
+      <updated>1403832429631</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -610,7 +656,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1400" height="1021" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299435" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -622,7 +668,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299435" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2541879" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21194464" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21194464" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33635333" sideWeight="0.49963585" order="2" side_tool="false" content_ui="tabs" x="1427" y="691" width="1373" height="297" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.3997735" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" x="1416" y="56" width="1373" height="353" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1446" y="201" width="521" height="552" />
@@ -1027,24 +1073,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/areaDetector/DetPE.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1305">
-          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/areaDetector/DetCore.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33294117" vertical-offset="17" max-vertical-offset="2850">
-          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-          <folding>
-            <element signature="e#359#374#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/config/XPDconfmaker.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.87647057" vertical-offset="1340" max-vertical-offset="2190">
@@ -1123,8 +1151,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.105882354" vertical-offset="0" max-vertical-offset="850">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
           <caret line="6" column="105" selection-start-line="6" selection-start-column="105" selection-end-line="6" selection-end-column="105" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/areaDetector/DetCore.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="110" max-vertical-offset="960">
+          <caret line="54" column="37" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
+          <folding>
+            <element signature="e#972#1404#0" expanded="false" />
+            <element signature="e#1565#3612#0" expanded="false" />
+            <element signature="e#3666#4476#0" expanded="false" />
+            <element signature="e#4511#4965#0" expanded="false" />
+            <element signature="e#5055#5696#0" expanded="false" />
+            <element signature="e#5728#6316#0" expanded="false" />
+            <element signature="e#6352#6538#0" expanded="false" />
+            <element signature="e#6711#7434#0" expanded="false" />
+            <element signature="e#7466#8479#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pyXPD/instrumentapi/areaDetector/DetPE.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1305">
+          <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
           <folding />
         </state>
       </provider>
