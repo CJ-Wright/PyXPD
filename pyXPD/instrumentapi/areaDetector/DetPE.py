@@ -5,6 +5,11 @@ Copyright (c) 2014 Brookhaven National Laboratory All rights reserved.
 Use is subject to license terms and conditions.
 
 @author: Christopher J. Wright
+
+This module deals with PVs specific to the PE detector
+
+.. warning:: There are major issues with this module, until it is tested against the detector, it may be very unreliable
+
 """
 
 import cothread
@@ -29,6 +34,8 @@ except:
 __PED=dict()
 for option in _conf.options('Detector PVs'):
     __PED[option]=_conf.get('Detector PVs',option)
+
+
 def Offset(Frames=None):
     """
     Reports on the status of the internal offset correction and aquires offset correction
@@ -52,6 +59,7 @@ def Offset(Frames=None):
             print 'Collecting frame number '+str(caget(__PED['OffsetFrame']))
         print 'Finished offset acquisition, offset now in use'
         caput(__PED['UseOff'], 1)
+
 
 def Gain(Use=False, Frames=None):
     """
@@ -79,8 +87,11 @@ def Gain(Use=False, Frames=None):
         print 'Finished Gain aquesition, Gain now in use'
         caput(__PED['UseGain'],1)
 
+
 def load_Offset(Filename=None):
     pass
+
+
 def load_Gain(Filename=None):
     return Filename    
     pass
