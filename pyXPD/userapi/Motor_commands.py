@@ -9,7 +9,7 @@ This module handles the user scans for the motors
 """
 from pyXPD.instrumentapi.motion.motors.status import *
 import pyXPD.instrumentapi.motion.motors.status as status
-from pyXPD.instrumentapi.areaDetector.DetCore import *
+# from pyXPD.instrumentapi.areaDetector.DetCore import *
 from pyXPD.userapi.Master_commands import printf
 from cothread.catools import *
 from pyXPD.instrumentapi.config._conf import _conf
@@ -62,7 +62,7 @@ def ascan(alias, start, finish, step, func, *args, **kwargs):
     finish : float
         Ending position for scan, absolute
     step : float
-        Step size betwfunceen function calls
+        Step size between function calls
     func : function
         This function gets called after each step is concluded
     *args:
@@ -186,7 +186,7 @@ def stop(alias):
     """
     Stop selected process, or all processes, NOT IMPLEMENTED
     """
-    pass
+    caput(motorD[alias]['pv']+'.STOP', 1)
 
 
 # TODO: these are called with wait functions

@@ -21,17 +21,20 @@ def __loadConfig():
 
     cf = ConfigParser.SafeConfigParser()
     cf.optionxform = str
+    configfile=open('/home/xpdlabuser/PyXPD/pyXPD/instrumentapi/config/XPD.conf')
+    cf.readfp(configfile)
     cf.read([
         '/etc/XPD.conf',
         os.path.expanduser('~/XPD.conf'),
-        'XPD.conf',
-        '/home/xpdlabuser/Spyder_Projects/XPD+_architecture/pyXPD/instrumentapi/config/XPD.conf'
+        '/home/xpdlabuser/PyXPD/pyXPD/instrumentapi/config/XPD.conf',
+        'pyXPD/instrumentapi/config/XPD.conf'
     ])
+    if cf.sections()==[]:
+        print 'Configuration failed to load'
     return cf
 
 
 _conf = __loadConfig()
-
 
 def __initPV(_conf=_conf, section=None):
     """

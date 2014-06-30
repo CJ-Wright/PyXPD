@@ -11,6 +11,7 @@ This module makes the beamline configuration files, not for general users.
 
 import ConfigParser
 import time
+import os
 
 
 config = ConfigParser.SafeConfigParser()
@@ -136,6 +137,7 @@ config.add_section(z)
 config.set(z, 'Flow_1', 'PV???')
 config.set(z, 'Flow_2', 'PV???')
 config.set(z, 'Flow_3', 'PV???')
+
 
 with open('XPD.conf', 'wb') as configfile:
     config.write(configfile)
