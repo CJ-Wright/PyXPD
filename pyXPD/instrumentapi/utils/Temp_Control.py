@@ -31,7 +31,7 @@ if _userconf.has_section('Temperature System'):
         heatcontroller = eurotherm3500.Eurotherm3500(_conf.get(z, 'Port'), _conf.get(z, 'Address'))
         deframp = float(_conf.get(z, 'DefRamp'))
         maxout = float(_conf.get(z, 'Max%'))
-        res = float(_conf.get(z, 'Res')) #I think this is meant to be 'Resolution', not 'Res', in order to be consistent with XPDconfmaker
+        res = float(_conf.get(z, 'Resolution')) #I think this is meant to be 'Resolution', not 'Res', in order to be consistent with XPDconfmaker
 
         def temp_ramp(value=None):
             """
