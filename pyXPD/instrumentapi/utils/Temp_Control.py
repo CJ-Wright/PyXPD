@@ -31,7 +31,7 @@ if _userconf.has_section('Temperature System'):
         heatcontroller = eurotherm3500.Eurotherm3500(_conf.get(z, 'Port'), _conf.get(z, 'Address'))
         deframp = float(_conf.get(z, 'DefRamp'))
         maxout = float(_conf.get(z, 'Max%'))
-        res = float(_conf.get(z, 'Res'))
+        res = float(_conf.get(z, 'Res')) #I think this is meant to be 'Resolution', not 'Res', in order to be consistent with XPDconfmaker
 
         def temp_ramp(value=None):
             """
@@ -65,8 +65,45 @@ if _userconf.has_section('Temperature System'):
                 return abs(Decimal(value).remainder_near(Decimal(_conf.get(z, 'Resolution')))) < 1e-10
 
     if _userconf.get('Temperature System', 'Control') in ['Cryostream', 'stream', 'cryostream']:
-        # stuff needs to go here about the cyrostream interface
-        pass
+
+        z = 'Cryostream'
+        deframp = float(_conf.get(z, 'DefRamp'))
+        res = float(_conf.get(z, 'Resolution'))
+        
+        def temp_ramp(value=None):
+            """
+            Sets the ramp rate equal to value
+            ..note:: This is assuming there is a ramp PV for the CryoStream..
+            """
+            if value is not None:
+                caput(config.get(z, 'Ramp_Rate'), value)
+            return caget(config.get(z, 'Ramp_Rate'))
+        
+        def current_Temp():
+            """
+            Gets the current temperature
+            """
+            return caget(config.get(z, 'Temp'))
+        
+        def setT(value=None):
+            """
+            Sets the temperature
+            """
+            if value is not None:
+                caput(config.get(z, 'Temp'), value)
+                return value
+            else:
+                return "Unknown target temperature"
+        
+        def res_check(value=None):
+            """
+            Allows for the checking of the requested temperature against the instrument resolution
+            ..note:: This is assuming there is temperature resolution PV for the CryoStream..
+            """
+            if value is None:
+                return caget(config.get(z, 'Resolution'))
+            else:
+                return abs(Decimal(value).remainder_near(Decimal(caget(config.get(z, 'Resolution'))))) < 1e-10
 
 
 def Temp_set(Start_Temp=None, Stop_Temp=None, Ramp=None, Time=None):

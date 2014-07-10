@@ -131,6 +131,10 @@ config.set(z, 'Resolution', '???')
 
 z = 'Cryostream'
 config.add_section(z)
+config.set(z, 'DefRamp', '360 OR PV???') #Is this where constants go?
+config.set(z, 'Temp', 'PV???')
+config.set(z, 'Resolution', '0.1 or PV???')
+config.set(z, 'Ramp_Rate', 'PV???')
 
 z = 'Flow Meter PVs'
 config.add_section(z)
